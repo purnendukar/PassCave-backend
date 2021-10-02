@@ -18,7 +18,8 @@ class Credential(BaseModel):
             models.Q(app_label='credential', model='agency')
     cred_type = models.ForeignKey(
         ContentType, 
-        limit_choices_to=limit
+        limit_choices_to=limit,
+        on_delete=models.CASCADE
     )
     owned_by = models.ForeignKey(
         to=User,
@@ -35,9 +36,7 @@ class Credential(BaseModel):
     )
     access_given = models.ManyToManyField(
         to=User,
-        related_name="credential_access",
-        null=True,
-        blank=True
+        related_name="credential_access"
     )
     object_id = models.PositiveIntegerField(
         null=False,
