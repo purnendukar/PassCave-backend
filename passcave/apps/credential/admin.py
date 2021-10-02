@@ -5,6 +5,6 @@ from apps.credential.models import (
 
 # Register your models here.
 class CredentialAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ("detail",)
 
 admin.site.register(Credential, CredentialAdmin)
