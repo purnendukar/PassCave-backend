@@ -151,12 +151,30 @@ class SecretNote(BaseModel):
     )
 
 
+class Identity(BaseModel):
+    id_name = models.CharField(
+        max_length=100,
+        null=False,
+        blank=False
+    )
+    id_number = models.CharField(
+        max_length=100,
+        null=False,
+        blank=False
+    )
+    image = models.ImageField(
+        null=True,
+        blank=True
+    )
+
+
 class Credential(BaseModel):
     CRED_TYPES = models.Q(app_label='credential', model='BankCard') | \
             models.Q(app_label='credential', model='BankDetail') | \
             models.Q(app_label='credential', model='UPIGateway') | \
             models.Q(app_label='credential', model='WebApplication') | \
-            models.Q(app_label='credential', model='SecretNote')
+            models.Q(app_label='credential', model='SecretNote') | \
+            models.Q(app_label='credential', model='Identity')
                 
     cred_type = models.ForeignKey(
         ContentType, 
