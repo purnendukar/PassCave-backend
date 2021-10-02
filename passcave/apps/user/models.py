@@ -3,9 +3,12 @@ from django.contrib.auth.models import AbstractUser
 
 from apps.plan.models import Plan
 from utils.base.models import BaseModel
+from apps.user.managers import UserManager
 
 # Create your models here.
+
 class User(BaseModel, AbstractUser):
+    objects = UserManager()
     username = None
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["password"]
