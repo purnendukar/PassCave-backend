@@ -48,7 +48,8 @@ INSTALLED_APPS = [
 
     'apps.user',
     'apps.plan',
-    'apps.credential'
+    'apps.credential',
+    'apps.organisation'
 ]
 
 MIDDLEWARE = [
