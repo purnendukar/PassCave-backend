@@ -12,7 +12,7 @@ class Plan(BaseModel):
         null=True, 
         blank=True
     )
-    no_members = models.IntegerField(
+    members_count = models.IntegerField(
         null=False, 
         blank=False, 
         verbose_name="Number of Members"
