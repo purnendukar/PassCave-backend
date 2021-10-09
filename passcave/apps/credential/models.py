@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
-from utils.base.models import BaseModel
+from apps.base.models import BaseModel
 from apps.user.models import User
 
 import calendar

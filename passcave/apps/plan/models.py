@@ -1,5 +1,5 @@
 from django.db import models
-from utils.base.models import BaseModel
+from apps.base.models import BaseModel
 
 # Create your models here.
 class Plan(BaseModel):
