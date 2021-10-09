@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 from apps.plan.models import Plan
-from utils.base.models import BaseModel
+from apps.base.models import BaseModel
 from apps.user.managers import UserManager
 
 # Create your models here.
