@@ -5,25 +5,15 @@ from apps.user.models import User
 
 # Create your models here.
 class Organisation(BaseModel):
-    ORG_TYPE_CHOICES = [
-        (1, 'Family'),
-        (2, 'Organisation')
-    ]
+    ORG_TYPE_CHOICES = [(1, "Family"), (2, "Organisation")]
     org_type = models.TextField(
-        choices=ORG_TYPE_CHOICES,
-        null=True,
-        blank=True,
-        default=2
+        choices=ORG_TYPE_CHOICES, null=True, blank=True, default=2
     )
     admin = models.OneToOneField(
         to=User,
         on_delete=models.CASCADE,
         related_name="owned_organisation",
         null=True,
-        blank=True
+        blank=True,
     )
-    members = models.ManyToManyField(
-        to=User,
-        related_name="organisations"
-    )
-
+    members = models.ManyToManyField(to=User, related_name="organisations")
