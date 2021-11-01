@@ -87,9 +87,6 @@ class Credential(BaseModel):
         null=True,
     )
     owned_by = models.ForeignKey(
-        to=User, on_delete=models.CASCADE, null=False, blank=False
-    )
-    owned_by = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
         related_name="credential_owned",
