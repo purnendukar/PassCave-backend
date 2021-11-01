@@ -1,4 +1,4 @@
-class MultiSerializerViewMixin:
+class MultiSerializerMixin:
     serializer_classes = {}
 
     def get_serializer_class(self):
@@ -7,7 +7,7 @@ class MultiSerializerViewMixin:
         return super().get_serializer_class()
 
 
-class MultiRequestValidatorViewMixin:
+class MultiRequestValidatorMixin:
     request_serializer_classes = {}
 
     def request_valiator(self):

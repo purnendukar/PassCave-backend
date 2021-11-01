@@ -11,12 +11,12 @@ from apps.user.serializers import AuthRequestSerializers, UserAuthSerializers
 
 # Create your views here.
 class AuthViewMixin(
-    mixins.MultiRequestValidatorViewMixin, mixins.MultiSerializerViewMixin
+    mixins.MultiRequestValidatorMixin, mixins.MultiSerializerMixin
 ):
     pass
 
 
-class AuthViewset(mixins.MultiRequestValidatorViewMixin, viewsets.GenericViewSet):
+class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
     model = User
     queryset = model.objects.all()
     # serializer_classes = {
