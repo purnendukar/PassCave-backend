@@ -6,12 +6,12 @@ from apps.credential.apis import BankCardViewSet, BankDetailViewSet, SecretNoteV
 
 default_router = DefaultRouter(trailing_slash=False)
 
-default_router.register("bank_card", BankCardViewSet)
-default_router.register("bank_detail", BankDetailViewSet)
-default_router.register("upi_gateway", UPIGatewayViewSet)
-default_router.register("identity", IdentityViewSet)
-default_router.register("web_application", WebApplicationViewSet)
-default_router.register("secret_note", SecretNoteViewSet)
+default_router.register("bank_card", BankCardViewSet, basename="bank_card")
+default_router.register("bank_detail", BankDetailViewSet, basename="bank_detail")
+default_router.register("upi_gateway", UPIGatewayViewSet, basename="upi_gateway")
+default_router.register("identity", IdentityViewSet, basename="identity")
+default_router.register("web_application", WebApplicationViewSet, basename="web_application")
+default_router.register("secret_note", SecretNoteViewSet, basename="secret_note")
 
 
 urlpatterns = default_router.urls
