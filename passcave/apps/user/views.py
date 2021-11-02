@@ -10,9 +10,7 @@ from apps.user.serializers import AuthRequestSerializers, UserAuthSerializers
 
 
 # Create your views here.
-class AuthViewMixin(
-    mixins.MultiRequestValidatorMixin, mixins.MultiSerializerMixin
-):
+class AuthViewMixin(mixins.MultiRequestValidatorMixin, mixins.MultiSerializerMixin):
     pass
 
 
