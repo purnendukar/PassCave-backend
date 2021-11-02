@@ -36,3 +36,10 @@ class UserAuthSerializers(serializers.ModelSerializer):
         if hasattr(instance, "profile"):
             return UserProfileSerializer(instance.profile).data
         return None
+
+
+class UserSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "email", "first_name", "last_name"]
+
