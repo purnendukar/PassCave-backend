@@ -1,32 +1,44 @@
 from django.db import models
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 
 from apps.base.models import BaseModel
 from apps.user.models import User
 
 import calendar
-from datetime import date
-
-# Create your models here.
 
 
-class BankCard(BaseModel):
+class AbstractCredentialModel(models.Model):
+    owned_by = models.ForeignKey(
+        to=User,
+        on_delete=models.CASCADE,
+        related_name="owned_%(class)s_cred",
+        null=False,
+        blank=False,
+    )
+    access_given = models.ManyToManyField(
+        to=User,
+        related_name="%(class)s_access_cred",
+    )
+
+    class Meta:
+        abstract = True
+
+
+class BankCard(BaseModel, AbstractCredentialModel):
     MONTH_CHOICES = [(str(i), calendar.month_name[i]) for i in range(1, 13)]
     CARD_TYPE_CHOICE = [
-        (1, "Credit Card"),
-        (2, "Debit Card"),
-        (3, "ATM Card"),
-        (4, "Other"),
+        ("credit_card", "Credit Card"),
+        ("debit_card", "Debit Card"),
+        ("atm_card", "ATM Card"),
+        ("other", "Other"),
     ]
-    YEAR_CHOICES = [(i, year) for i, year in enumerate(range(2020, 2030))]
+    YEAR_CHOICES = [(str(year), str(year)) for year in range(2020, 2030)]
 
     card_number = models.CharField(max_length=4 * 4, null=False, blank=False)
     expire_month = models.CharField(
-        max_length=20, choices=MONTH_CHOICES, null=False, blank=False
+        max_length=2, choices=MONTH_CHOICES, null=False, blank=False
     )
     expire_year = models.CharField(
-        max_length=12, choices=YEAR_CHOICES, null=False, blank=False
+        max_length=4, choices=YEAR_CHOICES, null=False, blank=False
     )
     cvv = models.CharField(max_length=3, null=False, blank=False)
     holder_name = models.CharField(max_length=100, null=True, blank=True)
@@ -34,9 +46,10 @@ class BankCard(BaseModel):
     card_type = models.CharField(
         max_length=20, choices=CARD_TYPE_CHOICE, null=False, blank=False, default=4
     )
+    tyu = "%(class)s"
 
 
-class BankDetail(BaseModel):
+class BankDetail(BaseModel, AbstractCredentialModel):
     account_number = models.CharField(max_length=30, null=False, blank=False)
     ifsc_code = models.CharField(max_length=20, null=False, blank=False)
     branch_code = models.CharField(max_length=20, null=False, blank=False)
@@ -45,7 +58,7 @@ class BankDetail(BaseModel):
     bank = models.CharField(max_length=100, null=True, blank=True)
 
 
-class WebApplication(BaseModel):
+class WebApplication(BaseModel, AbstractCredentialModel):
     url = models.CharField(max_length=255, null=False, blank=False)
     username = models.CharField(max_length=255, null=True, blank=True)
     mobile = models.CharField(max_length=15, null=True, blank=True)
@@ -53,46 +66,27 @@ class WebApplication(BaseModel):
     password = models.CharField(max_length=255, null=True, blank=True)
 
 
-class UPIGateway(BaseModel):
+class UPIGateway(BaseModel, AbstractCredentialModel):
     upi_id = models.CharField(max_length=255, null=False, blank=False)
     portal = models.CharField(max_length=255, null=True, blank=True)
     pin = models.CharField(max_length=255, null=True, blank=True)
 
+    class Meta:
+        verbose_name = "UPI gateway"
+        verbose_name_plural = "UPI gateways"
+        print(BankCard.tyu)
+        
 
-class SecretNote(BaseModel):
+
+class SecretNote(BaseModel, AbstractCredentialModel):
     topic = models.CharField(max_length=100, null=False, blank=False)
     note = models.TextField(null=False, blank=True)
 
 
-class Identity(BaseModel):
+class Identity(BaseModel, AbstractCredentialModel):
     id_name = models.CharField(max_length=100, null=False, blank=False)
     id_number = models.CharField(max_length=100, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
 
-
-class Credential(BaseModel):
-    CRED_TYPES = (
-        models.Q(app_label="credential", model="BankCard")
-        | models.Q(app_label="credential", model="BankDetail")
-        | models.Q(app_label="credential", model="UPIGateway")
-        | models.Q(app_label="credential", model="WebApplication")
-        | models.Q(app_label="credential", model="SecretNote")
-        | models.Q(app_label="credential", model="Identity")
-    )
-
-    cred_type = models.ForeignKey(
-        ContentType,
-        limit_choices_to=CRED_TYPES,
-        on_delete=models.CASCADE,
-        null=True,
-    )
-    owned_by = models.ForeignKey(
-        to=User,
-        on_delete=models.CASCADE,
-        related_name="credential_owned",
-        null=False,
-        blank=False,
-    )
-    access_given = models.ManyToManyField(to=User, related_name="credential_access")
-    object_id = models.UUIDField(null=False, blank=False)
-    detail = GenericForeignKey("cred_type", "object_id")
+    class Meta:
+        verbose_name_plural = "Identities"
