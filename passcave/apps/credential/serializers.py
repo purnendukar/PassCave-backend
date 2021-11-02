@@ -35,7 +35,7 @@ class WebApplicationSerializer(BaseSerializer, serializers.ModelSerializer):
         model = WebApplication
 
 
-class UPIGatewayerializer(BaseSerializer, serializers.ModelSerializer):
+class UPIGatewaySerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = UPIGateway
 
