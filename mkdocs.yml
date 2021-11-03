@@ -34,11 +34,11 @@ theme:
         name: Switch to light mode
 
 
-# plugins:
-#   - git-revision-date-localized
+plugins:
+  - git-revision-date-localized
 
 
-copyright: ''
+copyright: 'Copyright © 2021 - 2022 Purnendu Kar'
 
 # directory to output HTML build
 site_dir: _docs_html

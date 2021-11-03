@@ -9,3 +9,4 @@ mkdocs==1.2.3
 pymdown-extensions==9.0
 mkdocs-material==7.3.6
 markdown-include==0.6.0
+mkdocs-git-revision-date-localized-plugin==0.10.1
