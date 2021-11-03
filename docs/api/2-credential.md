@@ -244,6 +244,7 @@ Status: 200 OK
 }
 ```
 
+
 ## Bank Detail
 
 ### Get List
@@ -330,7 +331,6 @@ Status: 200 OK
 }
 ```
 
-
 ### Add Bank Detail
 
 ```
@@ -402,7 +402,6 @@ Status: 201 Created
     ]
 }
 ```
-
 
 ### Partial Update Bank Detail
 
