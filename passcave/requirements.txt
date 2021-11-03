@@ -5,3 +5,4 @@ mysqlclient==2.0.3
 Pillow==8.3.2
 djangorestframework==3.4.1
 black==21.10b0
+mkdocs==1.2.3
