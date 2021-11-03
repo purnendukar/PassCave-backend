@@ -13,9 +13,6 @@ from apps.user.serializers import AuthRequestSerializers, UserAuthSerializers
 class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
     model = User
     queryset = model.objects.all()
-    # serializer_classes = {
-    #     "register": AuthRequestSerializers
-    # }
     serializer_class = UserAuthSerializers
     request_serializer_classes = {
         "signup": AuthRequestSerializers,
