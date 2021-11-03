@@ -6,3 +6,4 @@ Pillow==8.3.2
 djangorestframework==3.4.1
 black==21.10b0
 mkdocs==1.2.3
+pymdown-extensions==9.0
