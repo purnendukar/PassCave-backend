@@ -10,10 +10,6 @@ from apps.user.serializers import AuthRequestSerializers, UserAuthSerializers
 
 
 # Create your views here.
-class AuthViewMixin(mixins.MultiRequestValidatorMixin, mixins.MultiSerializerMixin):
-    pass
-
-
 class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
     model = User
     queryset = model.objects.all()
@@ -22,28 +18,28 @@ class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
     # }
     serializer_class = UserAuthSerializers
     request_serializer_classes = {
-        "register": AuthRequestSerializers,
+        "signup": AuthRequestSerializers,
         "login": AuthRequestSerializers,
     }
 
-    @action(methods=["POST"], permission_classes=[])
-    def register(self, request):
+    @action(methods=["POST"], detail=False, permission_classes=[])
+    def signup(self, request):
         data, context = self.request_valiator()
-        user = self.model.create_user(**data)
-        serializer = self.get_serializer(user, context)
+        user = self.model.objects.create_user(**data)
+        serializer = self.get_serializer(user, context=context)
         return Response(
             {"message": "Registration successful", "data": serializer.data},
             status.HTTP_201_CREATED,
         )
 
-    @action(methods=["POST"], permission_classes=[])
+    @action(methods=["POST"], detail=False, permission_classes=[])
     def login(self, request):
         data, context = self.request_valiator()
         user = authenticate(**data)
         serializer = self.get_serializer(user, context)
         return Response({"message": "Login successful", "data": serializer.data})
 
-    @action(methods=["POST"], permission_classes=[])
+    @action(methods=["POST"], detail=False, permission_classes=[])
     def logout(self, request):
         request.auth.delete()
         return Response({"message": "Logout Succcessful"})
