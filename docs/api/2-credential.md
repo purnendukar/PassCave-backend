@@ -248,7 +248,7 @@ Status: 200 OK
 ## Bank Detail
 
 ### Get List
-Get list of bank card details that is owned by the user.
+Get list of bank details that is owned by the user.
 
 ```
 GET /api/credentials/bank_detail (requires authentication)
@@ -474,4 +474,225 @@ Status: 200 OK
     ]
 }
 ```
+
+
+## UPI Gateway
+
+### Get List
+Get list of upi gateway details that is owned by the user.
+
+```
+GET /api/credentials/upi_gateway (requires authentication)
+```
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": "a5f3a098-a290-4ecd-b171-992d54d5c372",
+            "created_at": "2021-11-03T17:58:59.734541Z",
+            "updated_at": "2021-11-03T17:58:59.734600Z",
+            "upi_id": "upi id",
+            "portal": "google pay",
+            "pin": "pin",
+            "owned_by": {
+                "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+                "email": "purnendu.kar8@gmail.com",
+                "first_name": "",
+                "last_name": ""
+            },
+            "access_given": [
+                {
+                    "id": "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+                    "email": "purnendu.kar8+5@gmail.com",
+                    "first_name": "",
+                    "last_name": ""
+                },
+                {
+                    "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+                    "email": "purnendu.kar8@gmail.com",
+                    "first_name": "",
+                    "last_name": ""
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Get Object
+
+```
+GET /api/credentials/upi_gateway/:id (requires authentication)
+```
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+    "id": "a5f3a098-a290-4ecd-b171-992d54d5c372",
+    "created_at": "2021-11-03T17:58:59.734541Z",
+    "updated_at": "2021-11-03T17:58:59.734600Z",
+    "upi_id": "upi id",
+    "portal": "google pay",
+    "pin": "pin",
+    "owned_by": {
+        "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+        "email": "purnendu.kar8@gmail.com",
+        "first_name": "",
+        "last_name": ""
+    },
+    "access_given": [
+        {
+            "id": "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+            "email": "purnendu.kar8+5@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        },
+        {
+            "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+            "email": "purnendu.kar8@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        }
+    ]
+}
+```
+
+### Add Bank Detail
+
+```
+POST /api/credentials/upi_gateway (requires authentication)
+```
+
+**Parameters**
+
+Name     | Description
+---------|-------------------------------------
+upi_id | UPI ID
+portal | Portal Name
+pin | UPI Pin
+access_given | List of user ids who can access this credential
+
+**Request**
+```json
+{
+    "upi_id": "upi id",
+    "portal": "google pay",
+    "pin": "pin",
+    "access_given": [
+        "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+        "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
+    ]
+}
+```
+
+**Response**
+```
+Status: 201 Created
+```
+```json
+{
+    "id": "7ff65521-3483-4b1d-a717-acc7fad801ba",
+    "created_at": "2021-11-03T18:14:23.083426Z",
+    "updated_at": "2021-11-03T18:14:23.083719Z",
+    "upi_id": "upi id",
+    "portal": "google pay",
+    "pin": "pin",
+    "owned_by": {
+        "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+        "email": "purnendu.kar8@gmail.com",
+        "first_name": "",
+        "last_name": ""
+    },
+    "access_given": [
+        {
+            "id": "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+            "email": "purnendu.kar8+5@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        },
+        {
+            "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+            "email": "purnendu.kar8@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        }
+    ]
+}
+```
+
+### Partial Update Bank Detail
+
+```
+PATCH /api/credentials/upi_gateway/:id (requires authentication)
+```
+
+**Parameters**
+
+Name     | Description
+---------|-------------------------------------
+upi_id | UPI ID
+portal | Portal Name
+pin | UPI Pin
+access_given | List of user ids who can access this credential
+
+**Request**
+```json
+{
+    "upi_id": "upi id",
+    "portal": "google pay",
+    "pin": "pin",
+    "access_given": [
+        "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+        "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
+    ]
+}
+```
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+    "id": "7ff65521-3483-4b1d-a717-acc7fad801ba",
+    "created_at": "2021-11-03T18:14:23.083426Z",
+    "updated_at": "2021-11-03T18:15:47.798535Z",
+    "upi_id": "upi id",
+    "portal": "google pay",
+    "pin": "pin",
+    "owned_by": {
+        "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+        "email": "purnendu.kar8@gmail.com",
+        "first_name": "",
+        "last_name": ""
+    },
+    "access_given": [
+        {
+            "id": "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+            "email": "purnendu.kar8+5@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        },
+        {
+            "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+            "email": "purnendu.kar8@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        }
+    ]
+}
+```
+
+
 
