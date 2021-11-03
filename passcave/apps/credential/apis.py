@@ -51,5 +51,5 @@ class SecretNoteViewSet(CredentialMixin, viewsets.ModelViewSet):
 
 
 class IdentityViewSet(CredentialMixin, viewsets.ModelViewSet):
-    queryset = BankDetail.objects.all()
+    queryset = Identity.objects.all()
     serializer_class = IdentitySerializer
