@@ -695,4 +695,217 @@ Status: 200 OK
 ```
 
 
+## Identity
+
+### Get List
+Get list of identity details that is owned by the user.
+
+```
+GET /api/credentials/upi_gateway (requires authentication)
+```
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": "87982293-c4b4-44f4-8fb3-6092d0d2261f",
+            "created_at": "2021-11-03T09:40:34.624757Z",
+            "updated_at": "2021-11-03T09:40:34.624805Z",
+            "id_name": "IDName",
+            "id_number": "IDNumber",
+            "image": null,
+            "owned_by": {
+                "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+                "email": "purnendu.kar8@gmail.com",
+                "first_name": "",
+                "last_name": ""
+            },
+            "access_given": [
+                {
+                    "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+                    "email": "purnendu.kar8@gmail.com",
+                    "first_name": "",
+                    "last_name": ""
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Get Object
+
+```
+GET /api/credentials/indentity/:id (requires authentication)
+```
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+    "id": "87982293-c4b4-44f4-8fb3-6092d0d2261f",
+    "created_at": "2021-11-03T09:40:34.624757Z",
+    "updated_at": "2021-11-03T09:40:34.624805Z",
+    "id_name": "IDName",
+    "id_number": "IDNumber",
+    "image": null,
+    "owned_by": {
+        "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+        "email": "purnendu.kar8@gmail.com",
+        "first_name": "",
+        "last_name": ""
+    },
+    "access_given": [
+        {
+            "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+            "email": "purnendu.kar8@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        }
+    ]
+}
+```
+
+### Create new data
+
+```
+POST /api/credentials/identity (requires authentication)
+```
+
+**Parameters**
+
+Name     | Description
+---------|-------------------------------------
+id_name | ID Name
+id_number | ID Number
+access_given | List of user ids who can access this credential
+image | Image object 
+
+!!! Note
+    To upload use form-data in request
+
+**Request**
+```json
+{
+    "id_name": "IDName",
+    "id_number": "IDNumber",
+    "image": null,
+    "access_given": [
+        "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+        "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
+    ]
+}
+```
+
+**Response**
+```
+Status: 201 Created
+```
+```json
+{
+    "id": "fbb14152-6292-44f5-a155-60038acafcdf",
+    "created_at": "2021-11-03T19:05:50.440511Z",
+    "updated_at": "2021-11-03T19:05:50.440793Z",
+    "id_name": "IDName",
+    "id_number": "IDNumber",
+    "image": null,
+    "owned_by": {
+        "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+        "email": "purnendu.kar8@gmail.com",
+        "first_name": "",
+        "last_name": ""
+    },
+    "access_given": [
+        {
+            "id": "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+            "email": "purnendu.kar8+5@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        },
+        {
+            "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+            "email": "purnendu.kar8@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        }
+    ]
+}
+```
+
+### Partial Update
+
+```
+PATCH /api/credentials/identity/:id (requires authentication)
+```
+
+**Parameters**
+
+Name     | Description
+---------|-------------------------------------
+id_name | ID Name
+id_number | ID Number
+access_given | List of user ids who can access this credential
+image | Image object 
+
+!!! Note
+    To upload use form-data in request
+
+**Request**
+```json
+{
+    "id_name": "IDName",
+    "id_number": "IDNumber",
+    "image": null,
+    "access_given": [
+        "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+        "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
+    ]
+}
+```
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+    "id": "fbb14152-6292-44f5-a155-60038acafcdf",
+    "created_at": "2021-11-03T19:05:50.440511Z",
+    "updated_at": "2021-11-03T19:06:42.769076Z",
+    "id_name": "IDName",
+    "id_number": "IDNumber",
+    "image": null,
+    "owned_by": {
+        "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+        "email": "purnendu.kar8@gmail.com",
+        "first_name": "",
+        "last_name": ""
+    },
+    "access_given": [
+        {
+            "id": "0e51875b-6786-4604-8c86-e7c6ab9ff516",
+            "email": "purnendu.kar8+5@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        },
+        {
+            "id": "24dd3436-32bb-4946-8a98-c46cfa6a3fd0",
+            "email": "purnendu.kar8@gmail.com",
+            "first_name": "",
+            "last_name": ""
+        }
+    ]
+}
+```
+
+
 
