@@ -18,31 +18,38 @@ from apps.credential.serializers import (
 )
 
 
-class BankCardViewSet(viewsets.ModelViewSet):
+class CredentialMixin:
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset.filter(owned_by=self.request.user)
+        return queryset
+
+
+class BankCardViewSet(CredentialMixin, viewsets.ModelViewSet):
     queryset = BankCard.objects.all()
     serializer_class = BankCardSerializer
 
 
-class BankDetailViewSet(viewsets.ModelViewSet):
+class BankDetailViewSet(CredentialMixin, viewsets.ModelViewSet):
     queryset = BankDetail.objects.all()
     serializer_class = BankDetailSerializer
 
 
-class WebApplicationViewSet(viewsets.ModelViewSet):
+class WebApplicationViewSet(CredentialMixin, viewsets.ModelViewSet):
     queryset = WebApplication.objects.all()
     serializer_class = WebApplicationSerializer
 
 
-class UPIGatewayViewSet(viewsets.ModelViewSet):
+class UPIGatewayViewSet(CredentialMixin, viewsets.ModelViewSet):
     queryset = UPIGateway.objects.all()
     serializer_class = UPIGatewaySerializer
 
 
-class SecretNoteViewSet(viewsets.ModelViewSet):
+class SecretNoteViewSet(CredentialMixin, viewsets.ModelViewSet):
     queryset = SecretNote.objects.all()
     serializer_class = SecretNoteSerializer
 
 
-class IdentityViewSet(viewsets.ModelViewSet):
+class IdentityViewSet(CredentialMixin, viewsets.ModelViewSet):
     queryset = BankDetail.objects.all()
     serializer_class = IdentitySerializer
