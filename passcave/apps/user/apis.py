@@ -39,7 +39,7 @@ class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
         serializer = self.get_serializer(user, context=context)
         return Response({"message": "Login successful", "data": serializer.data})
 
-    @action(methods=["POST"], detail=False, permission_classes=[])
+    @action(methods=["POST"], detail=False)
     def logout(self, request):
         request.auth.delete()
         return Response({"message": "Logout Succcessful"})
