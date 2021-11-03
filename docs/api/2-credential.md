@@ -92,7 +92,7 @@ Status: 200 OK
 ```
 
 
-### Add Bank Card
+### Create new data
 
 ```
 POST /api/credentials/bank_card (requires authentication)
@@ -169,7 +169,7 @@ Status: 201 Created
 ```
 
 
-### Partial Update Bank Card
+### Partial Update
 
 ```
 PATCH /api/credentials/bank_card/:id (requires authentication)
@@ -331,7 +331,7 @@ Status: 200 OK
 }
 ```
 
-### Add Bank Detail
+### Create new data
 
 ```
 POST /api/credentials/bank_detail (requires authentication)
@@ -403,7 +403,7 @@ Status: 201 Created
 }
 ```
 
-### Partial Update Bank Detail
+### Partial Update
 
 ```
 PATCH /api/credentials/bank_detail/:id (requires authentication)
@@ -568,7 +568,7 @@ Status: 200 OK
 }
 ```
 
-### Add UPI Gateway Detail
+### Create new data
 
 ```
 POST /api/credentials/upi_gateway (requires authentication)
@@ -631,7 +631,7 @@ Status: 201 Created
 }
 ```
 
-### Partial Update UPI Gateway Detail
+### Partial Update
 
 ```
 PATCH /api/credentials/upi_gateway/:id (requires authentication)
