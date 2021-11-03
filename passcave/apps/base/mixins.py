@@ -11,5 +11,8 @@ class MultiRequestValidatorMixin:
     request_serializer_classes = {}
 
     def request_valiator(self):
-        serializer = self.request_serializer_classes[self.actions](self.request.data)
+        if self.actions in self.request_serializer_classes:
+            serializer = self.request_serializer_classes[self.actions](self.request.data)
+        else:
+            serializer = self.get_serializer(self.request.data)
         return (serializer.validated_data, serializer.context)
