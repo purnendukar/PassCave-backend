@@ -156,6 +156,7 @@ REST_FRAMEWORK = {
     "DEFAULT_THROTTLE_CLASSES": ["rest_framework.throttling.AnonRateThrottle"],
     "DEFAULT_THROTTLE_RATES": {"anon": "10000/day"},
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "alkeme.users.auth.backends.KnoxTokenLastActiveBackend"
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
 }
