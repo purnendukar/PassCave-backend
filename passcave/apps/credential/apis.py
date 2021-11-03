@@ -24,6 +24,10 @@ class CredentialMixin:
         queryset.filter(owned_by=self.request.user)
         return queryset
 
+    def create(self, request, *args, **kwargs):
+        request.data["owned_by"] = request.user.id
+        return super().create(request)
+
 
 class BankCardViewSet(CredentialMixin, viewsets.ModelViewSet):
     queryset = BankCard.objects.all()
