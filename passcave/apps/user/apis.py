@@ -36,7 +36,7 @@ class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
     def login(self, request):
         data, context = self.request_valiator()
         user = authenticate(**data)
-        serializer = self.get_serializer(user, context)
+        serializer = self.get_serializer(user, context=context)
         return Response({"message": "Login successful", "data": serializer.data})
 
     @action(methods=["POST"], detail=False, permission_classes=[])
