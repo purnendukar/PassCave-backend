@@ -568,7 +568,7 @@ Status: 200 OK
 }
 ```
 
-### Add Bank Detail
+### Add UPI Gateway Detail
 
 ```
 POST /api/credentials/upi_gateway (requires authentication)
@@ -631,7 +631,7 @@ Status: 201 Created
 }
 ```
 
-### Partial Update Bank Detail
+### Partial Update UPI Gateway Detail
 
 ```
 PATCH /api/credentials/upi_gateway/:id (requires authentication)
