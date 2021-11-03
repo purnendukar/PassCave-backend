@@ -9,42 +9,51 @@ from apps.credential.models import (
     SecretNote,
     Identity,
 )
-from apps.user.serializers import UserSerializers
+from apps.user.serializers import UserSerializer
 
 
 class BaseSerializer(serializers.Serializer):
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        data["owned_by"] = UserSerializers(instance.owned_by).data
-        data["access_given"] = UserSerializers(instance.access_given.all()).data
+        if instance:
+            data["owned_by"] = UserSerializer(instance.owned_by).data
+            data["access_given"] = UserSerializer(
+                instance.access_given.all(), many=True
+            ).data
         return data
 
 
 class BankCardSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = BankCard
+        fields = "__all__"
 
 
 class BankDetailSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = BankDetail
+        fields = "__all__"
 
 
 class WebApplicationSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = WebApplication
+        fields = "__all__"
 
 
 class UPIGatewaySerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = UPIGateway
+        fields = "__all__"
 
 
 class SecretNoteSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = SecretNote
+        fields = "__all__"
 
 
 class IdentitySerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = Identity
+        fields = "__all__"
