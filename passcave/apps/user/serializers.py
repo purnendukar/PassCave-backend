@@ -28,11 +28,11 @@ class UserAuthSerializers(serializers.ModelSerializer):
         model = User
         fields = ["email", "profile", "token"]
 
-    def token(self, user):
+    def get_token(self, user):
         token, created = Token.objects.get_or_create(user=user)
-        return token
+        return token.key
 
-    def profile(self, instance):
+    def get_profile(self, instance):
         if hasattr(instance, "profile"):
             return UserProfileSerializer(instance.profile).data
         return None
