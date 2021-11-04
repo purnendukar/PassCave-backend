@@ -12,6 +12,9 @@ nav:
   - Secret Manager: api/2-credential.md
   - Plan: api/3-plan.md
   - Secret Group: api/4-secret-group.md
+  - Bank Secret: api/5-bank-secret.md
+  - Web App Secret : api/6-web-app-secret.md
+  - Secret Note: api/6-secret-note.md
   # - Errors: api/errors.md
 # - Technical Specs:
 #   - Server Config: backend/server_config.md
