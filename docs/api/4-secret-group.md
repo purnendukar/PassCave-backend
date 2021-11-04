@@ -1,4 +1,4 @@
-# Group
+# Secret Group
 
 !!!info
     For API overview and usages, check out [this page](0-overview.md)
