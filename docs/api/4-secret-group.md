@@ -76,7 +76,7 @@ Status: 201 Created
 ## Partial Update
 
 ```
-PATCH /api/secret_group/:id (requires authentication)
+PATCH /api/secret_group (requires authentication)
 ```
 
 **Parameters**
