@@ -34,7 +34,7 @@ Status: 200 OK
 }
 ```
 
-### Get Object
+## Get Object
 
 ```
 GET /api/organisation/:id (requires authentication)
@@ -59,7 +59,7 @@ Status: 200 OK
 ```
 
 
-### Create new data
+## Create new data
 
 ```
 POST /api/organisation (requires authentication)
@@ -102,7 +102,7 @@ Status: 201 Created
 ```
 
 
-### Partial Update
+## Partial Update
 
 ```
 PATCH /api/organisation/:id (requires authentication)
