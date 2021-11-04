@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "apps.user",
     "apps.plan",
     "apps.credential",
-    "apps.organisation",
+    "apps.secret_group",
 ]
 
 MIDDLEWARE = [

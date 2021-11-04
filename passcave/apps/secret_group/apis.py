@@ -1,15 +1,15 @@
 from rest_framework import viewsets
 from rest_framework import mixins
 
-from apps.organisation.models import Organisation
-from apps.organisation.serializers import OrganisationSerializer
+from apps.secret_group.models import SecretGroup
+from apps.secret_group.serializers import SecretGroupSerializer
 
 
-class OrganisationViewSet(
+class SecretGroupViewSet(
     viewsets.ModelViewSet
 ):
-    queryset = Organisation.objects.all()
-    serializer_class = OrganisationSerializer
+    queryset = SecretGroup.objects.all()
+    serializer_class = SecretGroupSerializer
 
     def get_queryset(self):
         return super().get_queryset().filter(admin=self.request.user)

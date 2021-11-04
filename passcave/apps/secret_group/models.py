@@ -4,11 +4,12 @@ from apps.base.models import BaseModel
 from apps.user.models import User
 
 # Create your models here.
-class Organisation(BaseModel):
-    ORG_TYPE_CHOICES = [("family", "Family"), ("organisation", "Organisation")]
-    org_type = models.TextField(
-        choices=ORG_TYPE_CHOICES, null=True, blank=True, default=2
+class SecretGroup(BaseModel):
+    GRP_TYPE_CHOICES = [("personal", "Personal"), ("organisation", "Organisation")]
+    grp_type = models.TextField(
+        choices=GRP_TYPE_CHOICES, null=True, blank=True, default=2
     )
+    name = models.CharField(max_length=100, blank=True)
     admin = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
