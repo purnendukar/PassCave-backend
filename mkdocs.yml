@@ -14,7 +14,8 @@ nav:
   - Secret Group: api/4-secret-group.md
   - Bank Secret: api/5-bank-secret.md
   - Web App Secret : api/6-web-app-secret.md
-  - Secret Note: api/6-secret-note.md
+  - Secret Note: api/7-secret-note.md
+  - Identity Secret: api/8-identity-secret.md
   # - Errors: api/errors.md
 # - Technical Specs:
 #   - Server Config: backend/server_config.md
