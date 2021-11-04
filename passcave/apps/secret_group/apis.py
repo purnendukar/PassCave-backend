@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 from rest_framework import viewsets
 from rest_framework import mixins
 
@@ -6,7 +8,10 @@ from apps.secret_group.serializers import SecretGroupSerializer
 
 
 class SecretGroupViewSet(
-    viewsets.ModelViewSet
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.CreateModelMixin,
+    viewsets.GenericViewSet,
 ):
     queryset = SecretGroup.objects.all()
     serializer_class = SecretGroupSerializer
@@ -15,10 +20,15 @@ class SecretGroupViewSet(
         return super().get_queryset().filter(admin=self.request.user)
 
     def get_object(self):
-        return self.get_queryset().first()
+        queryset = self.get_queryset()
+        filter_kwargs = {"admin": self.request.user.id}
+        obj = get_object_or_404(queryset, **filter_kwargs)
 
-    def perform_create(self, serializer):
-        self.request.data["admin"] = self.request.user.id
-        return super().perform_create(serializer)
-    
+        # May raise a permission denied
+        self.check_object_permissions(self.request, obj)
 
+        return obj
+
+    def create(self, request, *args, **kwargs):
+        request.data["admin"] = request.user.id
+        return super().create(request, *args, **kwargs)

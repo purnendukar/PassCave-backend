@@ -9,8 +9,7 @@ class SecretGroup(BaseModel):
     grp_type = models.TextField(
         choices=GRP_TYPE_CHOICES, null=True, blank=True, default=2
     )
-    name = models.CharField(max_length=100, blank=True)
-    admin = models.ForeignKey(
+    admin = models.OneToOneField(
         to=User,
         on_delete=models.CASCADE,
         related_name="owned_organisation",
