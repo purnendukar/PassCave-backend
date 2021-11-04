@@ -11,7 +11,7 @@ nav:
   - Authentication: api/1-auth.md
   - Secret Manager: api/2-credential.md
   - Plan: api/3-plan.md
-  - Organisation: api/4-organisation.md
+  - Secret Group: api/4-secret-group.md
   # - Errors: api/errors.md
 # - Technical Specs:
 #   - Server Config: backend/server_config.md
