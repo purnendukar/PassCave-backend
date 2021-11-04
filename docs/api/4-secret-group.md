@@ -73,11 +73,13 @@ Name     | Description
 ---------|-------------------------------------
 grp_type | Group Type (personal, orgnisation)
 members | List of user ids who can access this credential
+name | Name of the group
 
 **Request**
 ```json
 {
     "grp_type": "personal",
+    "name": "family",
     "members": [
         "0e51875b-6786-4604-8c86-e7c6ab9ff516",
         "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
