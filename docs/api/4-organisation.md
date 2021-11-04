@@ -112,14 +112,8 @@ PATCH /api/organisation/:id (requires authentication)
 
 Name     | Description
 ---------|-------------------------------------
-card_number | Card Number
-expire_month | Card Expire Month
-expire_year | Card Expire Year
-cvv | Card CVV Number
-holder_name | Holder Name
-bank | Bank Name
-card_type | Card Type (credit_card, debit_card, atm_card, other)
-access_given | List of user ids who can access this credential
+org_type | Organisation Type (family, orgnisation)
+members | List of user ids who can access this credential
 
 **Request**
 ```json
