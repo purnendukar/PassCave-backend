@@ -7,4 +7,4 @@ from apps.secret_group.models import SecretGroup
 class SecretGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = SecretGroup
-        fields = ["grp_type", "admin", "members"]
+        fields = ["grp_type", "members"]
