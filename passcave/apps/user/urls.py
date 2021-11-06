@@ -7,12 +7,12 @@ from apps.user.apis import UserProfileViewSet
 
 default_router = DefaultRouter(trailing_slash=False)
 
+default_router.register("", UserProfileViewSet)
+
 urlpatterns = [
     path(
         "",
-        UserProfileViewSet.as_view(
-            {"get": "retrieve"}
-        ),
+        UserProfileViewSet.as_view({"get": "retrieve"}),
         name="user",
     )
-]+default_router.urls
+] + default_router.urls

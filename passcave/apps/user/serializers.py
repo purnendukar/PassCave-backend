@@ -41,6 +41,7 @@ class UserAuthSerializers(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     plan = PlanSerializer()
+
     class Meta:
         model = UserProfile
         fields = ["plan"]
@@ -54,6 +55,18 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(UserSerializer):
     profile = ProfileSerializer()
+
     class Meta:
         model = User
         fields = UserSerializer.Meta.fields + ["profile"]
+
+
+class UserPlanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ["plan"]
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["plan"] = PlanSerializer(instance.plan).data
+        return data

@@ -6,7 +6,11 @@ from rest_framework import mixins
 
 from apps.base import mixins as base_mixins
 from apps.user.models import User
-from apps.user.serializers import AuthRequestSerializers, UserAuthSerializers
+from apps.user.serializers import (
+    AuthRequestSerializers,
+    UserAuthSerializers,
+    UserPlanSerializer,
+)
 from apps.user.serializers import UserProfileSerializer
 
 
@@ -43,13 +47,25 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
         return Response({"message": "Logout Succcessful"})
 
 
-class UserProfileViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class UserProfileViewSet(
+    base_mixins.MultiSerializerMixin,
+    mixins.RetrieveModelMixin,
+    viewsets.GenericViewSet,
+):
     queryset = User.objects.all()
     serializer_class = UserProfileSerializer
-    request_serializer_classes = {
-        # "profile": AuthRequestSerializers,
+    serializer_classes = {
+        "change_plan": UserPlanSerializer,
     }
 
     def get_object(self):
         print("resr")
         return self.request.user
+
+    @action(detail=False, methods=["PATCH"])
+    def change_plan(self, request):
+        data, context = self.request_valiator()
+        serializer = self.get_serializer(request.user.profile, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)

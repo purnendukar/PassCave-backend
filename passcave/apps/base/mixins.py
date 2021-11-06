@@ -19,3 +19,14 @@ class MultiRequestValidatorMixin:
             serializer = self.get_serializer(data=self.request.data)
         serializer.is_valid(raise_exception=True)
         return (serializer.validated_data, serializer.context)
+
+
+class MultiSerializerMixin:
+    serializer_classes = {}
+
+    def get_serializer_class(self):
+        if self.action in self.serializer_classes:
+            serializer = self.serializer_classes[self.action]
+        else:
+            serializer = super().get_serializer_class()
+        return serializer
