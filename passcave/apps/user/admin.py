@@ -8,10 +8,11 @@ from apps.user.models import User, UserProfile
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
     can_delete = False
-    verbose_name_plural = 'employee'
+    verbose_name_plural = "employee"
 
 
 class UserAdmin(admin.ModelAdmin):
     inlines = (UserProfileInline,)
+
 
 admin.site.register(User, UserAdmin)
