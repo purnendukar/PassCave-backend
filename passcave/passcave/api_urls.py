@@ -15,5 +15,6 @@ urlpatterns = [
     path("credentials/", include("apps.credential.urls"), name="credential"),
     path("plan/", include("apps.plan.urls"), name="plan"),
     path("secret_group", include("apps.secret_group.urls"), name="secret_group"),
+    path("me/", include("apps.user.urls"), name="me"),
 ]
 urlpatterns += default_router.urls

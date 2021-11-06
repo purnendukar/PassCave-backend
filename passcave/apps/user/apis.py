@@ -2,15 +2,16 @@ from django.contrib.auth import authenticate
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework import mixins
 
-from apps.base import mixins
-
+from apps.base import mixins as base_mixins
 from apps.user.models import User
 from apps.user.serializers import AuthRequestSerializers, UserAuthSerializers
+from apps.user.serializers import UserProfileSerializer
 
 
 # Create your views here.
-class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
+class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
     model = User
     queryset = model.objects.all()
     serializer_class = UserAuthSerializers
@@ -40,3 +41,15 @@ class AuthViewset(mixins.MultiRequestValidatorMixin, viewsets.GenericViewSet):
     def logout(self, request):
         request.auth.delete()
         return Response({"message": "Logout Succcessful"})
+
+
+class UserProfileViewSet(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserProfileSerializer
+    request_serializer_classes = {
+        # "profile": AuthRequestSerializers,
+    }
+
+    def get_object(self):
+        print("resr")
+        return self.request.user
