@@ -24,8 +24,6 @@ Status: 200 OK
     "results": [
         {
             "id": "088cd6e2-a904-48cf-baf4-f8136745052b",
-            "created_at": "2021-11-03T19:29:53.324837Z",
-            "updated_at": "2021-11-03T19:29:53.324880Z",
             "topic": "topic",
             "note": "note",
             "owned_by": {
@@ -66,8 +64,6 @@ Status: 200 OK
 ```json
 {
     "id": "088cd6e2-a904-48cf-baf4-f8136745052b",
-    "created_at": "2021-11-03T19:29:53.324837Z",
-    "updated_at": "2021-11-03T19:29:53.324880Z",
     "topic": "topic",
     "note": "note",
     "owned_by": {
@@ -126,8 +122,6 @@ Status: 201 Created
 ```json
 {
     "id": "050c61bf-a285-427e-b9bd-826b01705239",
-    "created_at": "2021-11-03T20:08:52.417848Z",
-    "updated_at": "2021-11-03T20:08:52.417979Z",
     "topic": "topic",
     "note": "note",
     "owned_by": {
@@ -186,8 +180,6 @@ Status: 200 OK
 ```json
 {
     "id": "050c61bf-a285-427e-b9bd-826b01705239",
-    "created_at": "2021-11-03T20:08:52.417848Z",
-    "updated_at": "2021-11-03T20:08:52.417979Z",
     "topic": "topic",
     "note": "note",
     "owned_by": {

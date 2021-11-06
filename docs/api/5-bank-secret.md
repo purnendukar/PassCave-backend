@@ -24,8 +24,6 @@ Status: 200 OK
     "results": [
         {
             "id": "0e5c38fb-7fe6-4103-9006-fbe19736718e",
-            "created_at": "2021-11-02T20:31:49.409628Z",
-            "updated_at": "2021-11-02T20:31:49.409677Z",
             "card_number": "987967864567",
             "expire_month": "1",
             "expire_year": "2022",
@@ -65,8 +63,6 @@ Status: 200 OK
 ```json
 {
     "id": "0e5c38fb-7fe6-4103-9006-fbe19736718e",
-    "created_at": "2021-11-02T20:31:49.409628Z",
-    "updated_at": "2021-11-02T20:31:49.409677Z",
     "card_number": "987967864567",
     "expire_month": "1",
     "expire_year": "2022",
@@ -136,8 +132,6 @@ Status: 201 Created
 ```json
 {
     "id": "902c893c-9788-446a-bdea-def7e4585469",
-    "created_at": "2021-11-03T12:45:10.868987Z",
-    "updated_at": "2021-11-03T12:45:10.869035Z",
     "card_number": "987967864567",
     "expire_month": "1",
     "expire_year": "2022",
@@ -212,8 +206,6 @@ Status: 200 OK
 ```json
 {
     "id": "902c893c-9788-446a-bdea-def7e4585469",
-    "created_at": "2021-11-03T12:45:10.868987Z",
-    "updated_at": "2021-11-03T12:45:10.869035Z",
     "card_number": "987967864567",
     "expire_month": "1",
     "expire_year": "2022",
@@ -306,8 +298,6 @@ Status: 200 OK
 ```json
 {
     "id": "694fc4bb-0887-462a-a7bf-e8debbdb70b0",
-    "created_at": "2021-11-03T09:39:16.091061Z",
-    "updated_at": "2021-11-03T09:39:16.091116Z",
     "account_number": "AccountNumber",
     "ifsc_code": "IFSCCode",
     "branch_code": "BranchCode",
@@ -372,8 +362,6 @@ Status: 201 Created
 ```json
 {
     "id": "4e337d13-8a61-4948-9758-17065b9d2480",
-    "created_at": "2021-11-03T14:51:42.671970Z",
-    "updated_at": "2021-11-03T14:51:42.672104Z",
     "account_number": "AccountNumber",
     "ifsc_code": "IFSCCode",
     "branch_code": "BranchCode",
@@ -444,8 +432,6 @@ Status: 200 OK
 ```json
 {
     "id": "4e337d13-8a61-4948-9758-17065b9d2480",
-    "created_at": "2021-11-03T14:51:42.671970Z",
-    "updated_at": "2021-11-03T14:54:41.331378Z",
     "account_number": "AccountNumber",
     "ifsc_code": "IFSCCode",
     "branch_code": "BranchCode",
@@ -497,8 +483,6 @@ Status: 200 OK
     "results": [
         {
             "id": "a5f3a098-a290-4ecd-b171-992d54d5c372",
-            "created_at": "2021-11-03T17:58:59.734541Z",
-            "updated_at": "2021-11-03T17:58:59.734600Z",
             "upi_id": "upi id",
             "portal": "google pay",
             "pin": "pin",
@@ -540,8 +524,6 @@ Status: 200 OK
 ```json
 {
     "id": "a5f3a098-a290-4ecd-b171-992d54d5c372",
-    "created_at": "2021-11-03T17:58:59.734541Z",
-    "updated_at": "2021-11-03T17:58:59.734600Z",
     "upi_id": "upi id",
     "portal": "google pay",
     "pin": "pin",
@@ -603,8 +585,6 @@ Status: 201 Created
 ```json
 {
     "id": "7ff65521-3483-4b1d-a717-acc7fad801ba",
-    "created_at": "2021-11-03T18:14:23.083426Z",
-    "updated_at": "2021-11-03T18:14:23.083719Z",
     "upi_id": "upi id",
     "portal": "google pay",
     "pin": "pin",
@@ -666,8 +646,6 @@ Status: 200 OK
 ```json
 {
     "id": "7ff65521-3483-4b1d-a717-acc7fad801ba",
-    "created_at": "2021-11-03T18:14:23.083426Z",
-    "updated_at": "2021-11-03T18:15:47.798535Z",
     "upi_id": "upi id",
     "portal": "google pay",
     "pin": "pin",

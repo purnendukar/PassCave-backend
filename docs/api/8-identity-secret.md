@@ -24,8 +24,6 @@ Status: 200 OK
     "results": [
         {
             "id": "87982293-c4b4-44f4-8fb3-6092d0d2261f",
-            "created_at": "2021-11-03T09:40:34.624757Z",
-            "updated_at": "2021-11-03T09:40:34.624805Z",
             "id_name": "IDName",
             "id_number": "IDNumber",
             "image": null,
@@ -61,8 +59,6 @@ Status: 200 OK
 ```json
 {
     "id": "87982293-c4b4-44f4-8fb3-6092d0d2261f",
-    "created_at": "2021-11-03T09:40:34.624757Z",
-    "updated_at": "2021-11-03T09:40:34.624805Z",
     "id_name": "IDName",
     "id_number": "IDNumber",
     "image": null,
@@ -121,8 +117,6 @@ Status: 201 Created
 ```json
 {
     "id": "fbb14152-6292-44f5-a155-60038acafcdf",
-    "created_at": "2021-11-03T19:05:50.440511Z",
-    "updated_at": "2021-11-03T19:05:50.440793Z",
     "id_name": "IDName",
     "id_number": "IDNumber",
     "image": null,
@@ -187,8 +181,6 @@ Status: 200 OK
 ```json
 {
     "id": "fbb14152-6292-44f5-a155-60038acafcdf",
-    "created_at": "2021-11-03T19:05:50.440511Z",
-    "updated_at": "2021-11-03T19:06:42.769076Z",
     "id_name": "IDName",
     "id_number": "IDNumber",
     "image": null,

@@ -24,8 +24,6 @@ Status: 200 OK
     "results": [
         {
             "id": "cb1f20a6-1f0c-40da-b2cb-8e1a4c87e157",
-            "created_at": "2021-11-03T19:16:02.168147Z",
-            "updated_at": "2021-11-03T19:16:02.168202Z",
             "url": "https://www.google.com",
             "username": "username",
             "mobile": "9876543217",
@@ -69,8 +67,6 @@ Status: 200 OK
 ```json
 {
     "id": "cb1f20a6-1f0c-40da-b2cb-8e1a4c87e157",
-    "created_at": "2021-11-03T19:16:02.168147Z",
-    "updated_at": "2021-11-03T19:16:02.168202Z",
     "url": "https://www.google.com",
     "username": "username",
     "mobile": "9876543217",
@@ -137,8 +133,6 @@ Status: 201 Created
 ```json
 {
     "id": "c0750631-8b00-4a8b-80d3-06e12c898e78",
-    "created_at": "2021-11-03T19:18:40.829896Z",
-    "updated_at": "2021-11-03T19:18:40.829940Z",
     "url": "https://www.google.com",
     "username": "username",
     "mobile": "9876543217",
@@ -205,8 +199,6 @@ Status: 200 OK
 ```json
 {
     "id": "c0750631-8b00-4a8b-80d3-06e12c898e78",
-    "created_at": "2021-11-03T19:18:40.829896Z",
-    "updated_at": "2021-11-03T19:19:56.161358Z",
     "url": "https://www.google.com",
     "username": "username",
     "mobile": "9876543217",
