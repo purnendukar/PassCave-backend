@@ -4,6 +4,7 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 
 from apps.user.models import User, UserProfile
+from apps.plan.serializers import PlanSerializer
 
 
 class AuthRequestSerializers(serializers.Serializer):
@@ -38,7 +39,21 @@ class UserAuthSerializers(serializers.ModelSerializer):
         return None
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    plan = PlanSerializer()
+    class Meta:
+        model = UserProfile
+        fields = ["plan"]
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["id", "email", "first_name", "last_name"]
+
+
+class UserProfileSerializer(UserSerializer):
+    profile = ProfileSerializer()
+    class Meta:
+        model = User
+        fields = UserSerializer.Meta.fields + ["profile"]
