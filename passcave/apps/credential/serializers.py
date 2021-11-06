@@ -21,7 +21,7 @@ class BaseSerializer(serializers.Serializer):
                 instance.access_given.all(), many=True
             ).data
         return data
-    
+
     class Meta:
         fields = ["owned_by", "access_given"]
 
@@ -58,7 +58,14 @@ class BankDetailSerializer(BaseSerializer, serializers.ModelSerializer):
 class WebApplicationSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = WebApplication
-        fields = ["id", "url", "username", "email", "mobile", "password"] + BaseSerializer.Meta.fields
+        fields = [
+            "id",
+            "url",
+            "username",
+            "email",
+            "mobile",
+            "password",
+        ] + BaseSerializer.Meta.fields
 
 
 class UPIGatewaySerializer(BaseSerializer, serializers.ModelSerializer):
