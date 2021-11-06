@@ -64,7 +64,6 @@ class UserProfileViewSet(
 
     @action(detail=False, methods=["PATCH"])
     def change_plan(self, request):
-        data, context = self.request_valiator()
         serializer = self.get_serializer(request.user.profile, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
