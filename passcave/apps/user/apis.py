@@ -30,7 +30,7 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
         user = self.model.objects.create_user(**data)
         serializer = self.get_serializer(user, context=context)
         return Response(
-            {"message": "Registration successful", "data": serializer.data},
+            serializer.data,
             status.HTTP_201_CREATED,
         )
 
@@ -39,12 +39,12 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
         data, context = self.request_valiator()
         user = authenticate(**data)
         serializer = self.get_serializer(user, context=context)
-        return Response({"message": "Login successful", "data": serializer.data})
+        return Response(serializer.data)
 
     @action(methods=["POST"], detail=False)
     def logout(self, request):
         request.auth.delete()
-        return Response({"message": "Logout Succcessful"})
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class UserProfileViewSet(
