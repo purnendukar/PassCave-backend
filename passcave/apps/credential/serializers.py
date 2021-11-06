@@ -26,13 +26,30 @@ class BaseSerializer(serializers.Serializer):
 class BankCardSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = BankCard
-        fields = ["id", "card_number", "expire_month", "expire_year", "cvv", "holder_name", "bank", "card_type"]
+        fields = [
+            "id",
+            "card_number",
+            "expire_month",
+            "expire_year",
+            "cvv",
+            "holder_name",
+            "bank",
+            "card_type",
+        ]
 
 
 class BankDetailSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = BankDetail
-        fields = ["id", "account_number", "ifsc_code", "branch_code", "branch_name", "holder_name", "bank"]
+        fields = [
+            "id",
+            "account_number",
+            "ifsc_code",
+            "branch_code",
+            "branch_name",
+            "holder_name",
+            "bank",
+        ]
 
 
 class WebApplicationSerializer(BaseSerializer, serializers.ModelSerializer):
