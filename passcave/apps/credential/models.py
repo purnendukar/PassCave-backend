@@ -46,7 +46,6 @@ class BankCard(BaseModel, AbstractCredentialModel):
     card_type = models.CharField(
         max_length=20, choices=CARD_TYPE_CHOICE, null=False, blank=False, default=4
     )
-    tyu = "%(class)s"
 
 
 class BankDetail(BaseModel, AbstractCredentialModel):

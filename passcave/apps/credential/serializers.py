@@ -26,34 +26,34 @@ class BaseSerializer(serializers.Serializer):
 class BankCardSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = BankCard
-        fields = "__all__"
+        fields = ["id", "card_number", "expire_month", "expire_year", "cvv", "holder_name", "bank", "card_type"]
 
 
 class BankDetailSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = BankDetail
-        fields = "__all__"
+        fields = ["id", "account_number", "ifsc_code", "branch_code", "branch_name", "holder_name", "bank"]
 
 
 class WebApplicationSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = WebApplication
-        fields = "__all__"
+        fields = ["id", "url", "username", "email", "mobile", "password"]
 
 
 class UPIGatewaySerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = UPIGateway
-        fields = "__all__"
+        fields = ["upi_id", "portal", "pin"]
 
 
 class SecretNoteSerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = SecretNote
-        fields = "__all__"
+        fields = ["id", "topic", "note"]
 
 
 class IdentitySerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = Identity
-        fields = "__all__"
+        fields = ["id", "id_name", "id_number", "image"]

@@ -15,10 +15,12 @@ class AuthRequestSerializers(serializers.Serializer):
         fields = ["email", "password"]
 
 
-class UserProfileSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
+    plan = PlanSerializer()
+
     class Meta:
         model = UserProfile
-        fields = "__all__"
+        fields = ["plan"]
 
 
 class UserAuthSerializers(serializers.ModelSerializer):
@@ -35,16 +37,8 @@ class UserAuthSerializers(serializers.ModelSerializer):
 
     def get_profile(self, instance):
         if hasattr(instance, "profile"):
-            return UserProfileSerializer(instance.profile).data
+            return ProfileSerializer(instance.profile).data
         return None
-
-
-class ProfileSerializer(serializers.ModelSerializer):
-    plan = PlanSerializer()
-
-    class Meta:
-        model = UserProfile
-        fields = ["plan"]
 
 
 class UserSerializer(serializers.ModelSerializer):
