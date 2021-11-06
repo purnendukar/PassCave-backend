@@ -10,3 +10,6 @@ class Plan(BaseModel):
     members_count = models.IntegerField(
         null=False, blank=False, verbose_name="Number of Members"
     )
+
+    def __str__(self) -> str:
+        return self.name
