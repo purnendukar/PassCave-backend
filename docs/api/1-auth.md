@@ -30,12 +30,9 @@ Status: 201 Created
 ```
 ```json
 {
-    "message": "Registration successful",
-    "data": {
-        "email": "purnendu.kar8+6@gmail.com",
-        "profile": null,
-        "token": "ade1f6798ea28300a3886cd1c62ced05fef66a5a"
-    }
+    "email": "purnendu.kar8+6@gmail.com",
+    "profile": null,
+    "token": "ade1f6798ea28300a3886cd1c62ced05fef66a5a"
 }
 ```
 
@@ -67,12 +64,9 @@ Status: 200 OK
 ```
 ```json
 {
-    "message": "Login successful",
-    "data": {
-        "email": "purnendu.kar8@gmail.com",
-        "profile": null,
-        "token": "f7949ae8e70876d217b18648ae14b94c9a8a9222"
-    }
+    "email": "purnendu.kar8@gmail.com",
+    "profile": null,
+    "token": "f7949ae8e70876d217b18648ae14b94c9a8a9222"
 }
 ```
 
