@@ -73,7 +73,6 @@ class UPIGateway(BaseModel, AbstractCredentialModel):
     class Meta:
         verbose_name = "UPI gateway"
         verbose_name_plural = "UPI gateways"
-        print(BankCard.tyu)
 
 
 class SecretNote(BaseModel, AbstractCredentialModel):
