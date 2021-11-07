@@ -14,7 +14,7 @@ PassCave is a password management system. In this a project we have build a back
 - Clone the project: `git clone https://github.com/purnendukar/PassCave-backend.git`
 - Install virtualenvwrapper: `pip install virtualenvwrapper==4.8.4`
 ---
-**Note** 
+**NOTE** 
 
 To customize virtualenvwrapper refer `https://virtualenvwrapper.readthedocs.io/en/latest/`
 
@@ -26,7 +26,7 @@ To customize virtualenvwrapper refer `https://virtualenvwrapper.readthedocs.io/e
 - Open Project directory: `cd path/to/project/passcave`
 
 ---
-**Note**
+**NOTE**
 
 Create `.env` file and set the variable values as given in `.env_example`
 
