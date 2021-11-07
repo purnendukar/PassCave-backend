@@ -3,7 +3,7 @@ django-environ==0.7.0
 psycopg2==2.9.1
 mysqlclient==2.0.3
 Pillow==8.3.2
-djangorestframework==3.4.1
+djangorestframework==3.12.4
 black==21.10b0
 mkdocs==1.2.3
 pymdown-extensions==9.0
