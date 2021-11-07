@@ -2,7 +2,7 @@
 site_name: PassCave
 site_description: PassCave is password management system.
 site_author: purnendukar
-repo_url: https://github.com/purnendukar/PassCave
+repo_url: https://github.com/purnendukar/PassCave-backend
 
 nav:
 - Introduction: index.md
