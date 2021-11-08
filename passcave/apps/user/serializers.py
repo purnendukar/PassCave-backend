@@ -59,6 +59,7 @@ class UserProfileSerializer(UserSerializer):
     class Meta:
         model = User
         fields = UserSerializer.Meta.fields + ["profile"]
+        read_only_fields = ["email"]
 
 
 class UserPlanSerializer(serializers.ModelSerializer):
