@@ -66,19 +66,21 @@ class UserProfileViewSet(
     def create(self, request, *args, **kwargs):
         request.data["user"] = str(request.user.id)
         return super().create(request, *args, **kwargs)
-    
+
     def partial_update(self, request, *args, **kwargs):
         instance = self.get_object()
         user_data = request.data.copy()
-        
+
         if user_data.get("profile"):
             del user_data["profile"]
-        
+
         user_serializer = UserSerializer(request.user, data=user_data, partial=True)
         user_serializer.is_valid(raise_exception=True)
         user_serializer.save()
 
-        serializer = self.get_serializer(instance, data=request.data.get("profile", {}), partial=True)
+        serializer = self.get_serializer(
+            instance, data=request.data.get("profile", {}), partial=True
+        )
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
