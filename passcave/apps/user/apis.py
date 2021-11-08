@@ -10,6 +10,7 @@ from apps.user.serializers import (
     AuthRequestSerializers,
     UserAuthSerializers,
     ProfileSerializer,
+    UserProfileSerializer,
 )
 
 
@@ -47,16 +48,20 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
 
 
 class UserProfileViewSet(
+    base_mixins.MultiSerializerMixin,
     mixins.RetrieveModelMixin,
     mixins.CreateModelMixin,
     mixins.UpdateModelMixin,
     viewsets.GenericViewSet,
 ):
-    queryset = UserProfile.objects.all()
     serializer_class = ProfileSerializer
+    serializer_classes = {
+        "retrieve": UserProfileSerializer,
+        "partial_update": UserProfileSerializer,
+    }
 
     def get_object(self):
-        return self.request.user.profile
+        return self.request.user
 
     def create(self, request, *args, **kwargs):
         request.data["user"] = str(request.user.id)

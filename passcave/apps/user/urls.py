@@ -7,7 +7,7 @@ from apps.user.apis import UserProfileViewSet
 
 default_router = DefaultRouter(trailing_slash=False)
 
-default_router.register("", UserProfileViewSet)
+default_router.register("", UserProfileViewSet, basename="user")
 
 urlpatterns = [
     path(

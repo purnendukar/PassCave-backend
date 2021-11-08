@@ -30,7 +30,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        data["plan"] = PlanSerializer
+        data["plan"] = PlanSerializer(instance.plan).data
         return data
 
 
