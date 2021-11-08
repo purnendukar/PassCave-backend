@@ -1,12 +1,9 @@
-# Secret Manager
+# User Profile
 
 !!!info
     For API overview and usages, check out [this page](0-overview.md)
 
-## User Profile
-
-### Get List
-Get list of identity details that is owned by the user.
+## Get User Details
 
 ```
 GET /api/me (requires authentication)
@@ -34,7 +31,7 @@ Status: 200 OK
 }
 ```
 
-### Add Profile Related Data
+## Add Profile Data
 
 ```
 POST /api/me/ (requires authentication)
@@ -75,7 +72,7 @@ Status: 201 Created
 }
 ```
 
-### Partial Update
+## Partial Update
 
 ```
 PATCH /api/me/ (requires authentication)
