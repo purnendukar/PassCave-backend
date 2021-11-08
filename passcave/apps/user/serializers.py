@@ -15,17 +15,28 @@ class AuthRequestSerializers(serializers.Serializer):
         fields = ["email", "password"]
 
 
-class ProfileSerializer(serializers.ModelSerializer):
-    plan = PlanSerializer()
+class UserProfileResponseSerializer(serializers.ModelSerializer):
+    plan = PlanSerializer(read_only=True)
 
     class Meta:
         model = UserProfile
         fields = ["plan"]
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ["user", "plan"]
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["plan"] = PlanSerializer
+        return data
+
+
 class UserAuthSerializers(serializers.ModelSerializer):
     token = serializers.SerializerMethodField()
-    profile = serializers.SerializerMethodField()
+    profile = UserProfileResponseSerializer(read_only=True, many=False)
 
     class Meta:
         model = User
@@ -35,11 +46,6 @@ class UserAuthSerializers(serializers.ModelSerializer):
         token, created = Token.objects.get_or_create(user=user)
         return token.key
 
-    def get_profile(self, instance):
-        if hasattr(instance, "profile"):
-            return ProfileSerializer(instance.profile).data
-        return None
-
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -48,7 +54,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(UserSerializer):
-    profile = ProfileSerializer()
+    profile = UserProfileResponseSerializer(read_only=True, many=False)
 
     class Meta:
         model = User

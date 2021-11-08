@@ -21,6 +21,4 @@ class UserProfile(BaseModel):
     user = models.OneToOneField(
         to=User, on_delete=models.CASCADE, related_name="profile"
     )
-    plan = models.OneToOneField(
-        to=Plan, on_delete=models.CASCADE, null=False, blank=False
-    )
+    plan = models.OneToOneField(to=Plan, on_delete=models.CASCADE)

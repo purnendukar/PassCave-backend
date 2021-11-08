@@ -5,13 +5,12 @@ from rest_framework.response import Response
 from rest_framework import mixins
 
 from apps.base import mixins as base_mixins
-from apps.user.models import User
+from apps.user.models import User, UserProfile
 from apps.user.serializers import (
     AuthRequestSerializers,
     UserAuthSerializers,
-    UserPlanSerializer,
+    ProfileSerializer,
 )
-from apps.user.serializers import UserProfileSerializer
 
 
 # Create your views here.
@@ -48,23 +47,17 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
 
 
 class UserProfileViewSet(
-    base_mixins.MultiSerializerMixin,
     mixins.RetrieveModelMixin,
+    mixins.CreateModelMixin,
+    mixins.UpdateModelMixin,
     viewsets.GenericViewSet,
 ):
-    queryset = User.objects.all()
-    serializer_class = UserProfileSerializer
-    serializer_classes = {
-        "change_plan": UserPlanSerializer,
-    }
+    queryset = UserProfile.objects.all()
+    serializer_class = ProfileSerializer
 
     def get_object(self):
-        print("resr")
-        return self.request.user
+        return self.request.user.profile
 
-    @action(detail=False, methods=["PATCH"])
-    def change_plan(self, request):
-        serializer = self.get_serializer(request.user.profile, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
+    def create(self, request, *args, **kwargs):
+        request.data["user"] = str(request.user.id)
+        return super().create(request, *args, **kwargs)
