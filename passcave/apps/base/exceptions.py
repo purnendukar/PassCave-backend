@@ -89,10 +89,10 @@ def parse_field_errors(field, error_msg, error_values, depth=0):
         errors.append(
             {
                 "field": error_msg
-                if error_msg and error_values and type(error_values) != list
+                if error_msg and error_values and isinstance(error_values, list)
                 else field,
                 "message": " ".join(error_values[error_msg])
-                if error_msg and error_values and type(error_values) != list
+                if error_msg and error_values and isinstance(error_values, list)
                 else error_msg,
             }
         )
