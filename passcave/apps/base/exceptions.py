@@ -100,6 +100,33 @@ def parse_field_errors(field, error_msg, error_values, depth=0):
     return errors
 
 
+def dict_format_exception(error_key, error_values):
+    # For the cases of nested field e.g. ListField and the error is in
+    # validating one of the child items.
+    return {
+        "field": error_key,
+        "message": "Validation failed for one of the item in the list.",
+        "errors": [
+            {
+                "field": key,
+                "message": ", ".join(msg) if isinstance(msg, list) else msg,
+            }
+            for key, msg in error_values.items()
+        ],
+    }
+
+
+def list_format_exception(error_key, error_values):
+    errors = []
+    for error_msg in error_values:
+        # Special Case for model clean
+        if error_key == "non_field_errors":
+            errors.append({"message": error_msg})
+        else:
+            errors = errors + parse_field_errors(error_key, error_msg, error_values)
+    return errors
+
+
 def format_exception(exc):
     class_name = exc.__class__.__name__
     detail = {"errors": [], "error_type": class_name}
@@ -108,30 +135,9 @@ def format_exception(exc):
             if isinstance(error_values, dict):
                 # For the cases of nested field e.g. ListField and the error is in
                 # validating one of the child items.
-                detail["errors"].append(
-                    {
-                        "field": error_key,
-                        "message": "Validation failed for one of the item in the list.",
-                        "errors": [
-                            {
-                                "field": error_key,
-                                "message": ", ".join(error_msg)
-                                if isinstance(error_msg, list)
-                                else error_msg,
-                            }
-                            for error_key, error_msg in error_values.items()
-                        ],
-                    }
-                )
+                detail["errors"].append(dict_format_exception(error_key, error_values))
             else:
-                for error_msg in error_values:
-                    # Special Case for model clean
-                    if error_key == "non_field_errors":
-                        detail["errors"].append({"message": error_msg})
-                    else:
-                        detail["errors"] = detail["errors"] + parse_field_errors(
-                            error_key, error_msg, error_values
-                        )
+                detail["errors"].extends(list_format_exception(error_key, error_values))
     elif isinstance(exc.detail, list):
         for error_msg in exc.detail:
             detail["errors"].append({"message": error_msg})
@@ -151,7 +157,17 @@ def exception_handler(exc, context=None):
     to be raised.
     """
 
-    if isinstance(exc, Http404):
+    if isinstance(exc, exceptions.APIException):
+        headers = {}
+        if getattr(exc, "auth_header", None):
+            headers["WWW-Authenticate"] = exc.auth_header
+        if getattr(exc, "wait", None):
+            headers["X-Throttle-Wait-Seconds"] = "%d" % exc.wait
+
+        detail = format_exception(exc)
+        return Response(detail, status=exc.status_code, headers=headers)
+
+    elif isinstance(exc, Http404):
         return Response(
             {"error_type": exc.__class__.__name__, "errors": [{"message": str(exc)}]},
             status=status.HTTP_404_NOT_FOUND,
