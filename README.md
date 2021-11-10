@@ -6,9 +6,9 @@ PassCave is a password management system. In this a project we have build a back
 
 ## Basic Requirement
 
-  - Python 3.9.7 (Programming Language)
-  - Django 3.2.7 (Backend Framework)
-  - virtualenvwrapper 4.8.4 (Virtual Environment)
+- Python 3.9.7 (Programming Language)
+- Django 3.2.7 (Backend Framework)
+- virtualenvwrapper 4.8.4 (Virtual Environment)
 
 ## Project Setup
 
