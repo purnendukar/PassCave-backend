@@ -4,7 +4,7 @@
 
 ----
 
-## Dev (12/10/2021 -- 09/10/2021)
+## Dev (12/09/2021 -- 09/10/2021)
 
 **09/10/2021**
 
@@ -47,3 +47,9 @@
 - Add `GET /api/me` endpoint.
 - Add `Post /api/me/` endpoint.
 - Add `PATCH /api/me/` endpoint.
+
+## Dev (10/10/2021 -- 10/10/2021)
+
+**10/10/2021**
+
+- DRF default custom exception handler added
