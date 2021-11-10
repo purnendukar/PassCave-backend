@@ -43,12 +43,6 @@ class RequestValidationError(BadRequest):
     default_detail = _("Data validation error")
 
 
-class PermissionDenied(exceptions.PermissionDenied):
-    """Compatibility subclass of restframework `PermissionDenied` exception."""
-
-    pass
-
-
 class IntegrityError(BadRequest):
     default_detail = _("Integrity Error for wrong or invalid arguments")
 
@@ -57,12 +51,6 @@ class PreconditionError(BadRequest):
     """Error raised on precondition method on viewset."""
 
     default_detail = _("Precondition error")
-
-
-class NotAuthenticated(exceptions.NotAuthenticated):
-    """Compatibility subclass of restframework `NotAuthenticated` exception."""
-
-    pass
 
 
 def parse_field_errors(field, error_msg, error_values, depth=0):
