@@ -163,6 +163,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "EXCEPTION_HANDLER": "apps.base.exceptions.exception_handler",
 }
 
 # print(env.list("CORS_ALLOWED_ORIGINS"), ["asda","sad"])
