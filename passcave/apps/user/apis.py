@@ -3,9 +3,10 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import mixins
+from rest_framework.exceptions import AuthenticationFailed
 
 from apps.base import mixins as base_mixins
-from apps.user.models import User, UserProfile
+from apps.user.models import User
 from apps.user.serializers import (
     AuthRequestSerializers,
     UserAuthSerializers,
@@ -39,6 +40,8 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
     def login(self, request):
         data, context = self.request_valiator()
         user = authenticate(**data)
+        if not user:
+            raise AuthenticationFailed
         serializer = self.get_serializer(user, context=context)
         return Response(serializer.data)
 
