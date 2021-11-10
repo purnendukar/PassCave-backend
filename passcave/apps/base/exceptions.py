@@ -144,6 +144,7 @@ def exception_handler(exc):
     Any unhandled exceptions may return `None`, which will cause a 500 error
     to be raised.
     """
+    response = None
 
     if isinstance(exc, exceptions.APIException):
         headers = {}
@@ -153,19 +154,19 @@ def exception_handler(exc):
             headers["X-Throttle-Wait-Seconds"] = "%d" % exc.wait
 
         detail = format_exception(exc)
-        return Response(detail, status=exc.status_code, headers=headers)
+        response = Response(detail, status=exc.status_code, headers=headers)
 
     elif isinstance(exc, Http404):
-        return Response(
+        response = Response(
             {"error_type": exc.__class__.__name__, "errors": [{"message": str(exc)}]},
             status=status.HTTP_404_NOT_FOUND,
         )
 
     elif isinstance(exc, DjangoPermissionDenied):
-        return Response(
+        response = Response(
             {"error_type": exc.__class__.__name__, "errors": [{"message": str(exc)}]},
             status=status.HTTP_403_FORBIDDEN,
         )
-    else:
-        # Note: Unhandled exceptions will raise a 500 error.
-        return None
+
+    # Note: Unhandled exceptions will raise a 500 error.
+    return response
