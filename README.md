@@ -10,6 +10,7 @@ Backend server which has the REST API for password management services.
 * Django 3.2.7 (Backend Framework)
 * virtualenvwrapper 4.8.4 (Virtual Environment)
 
+
 ## Project Setup
 
   Clone the project:  `git clone https://github.com/purnendukar/PassCave-backend.git`
