@@ -26,7 +26,7 @@ class CredentialMixin:
 
     def create(self, request, *args, **kwargs):
         request.data["owned_by"] = request.user.id
-        return super().create(request)
+        return super().create(request, *args, **kwargs)
 
 
 class BankCardViewSet(CredentialMixin, viewsets.ModelViewSet):

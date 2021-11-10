@@ -70,7 +70,7 @@ class UserProfileViewSet(
         request.data["user"] = str(request.user.id)
         return super().create(request, *args, **kwargs)
 
-    def partial_update(self, request, *args, **kwargs):
+    def partial_update(self, request):
         instance = self.get_object()
         user_data = request.data.copy()
 
