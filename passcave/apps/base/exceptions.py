@@ -166,6 +166,6 @@ def exception_handler(exc):
             {"error_type": exc.__class__.__name__, "errors": [{"message": str(exc)}]},
             status=status.HTTP_403_FORBIDDEN,
         )
-
-    # Note: Unhandled exceptions will raise a 500 error.
-    return None
+    else:
+        # Note: Unhandled exceptions will raise a 500 error.
+        return None
