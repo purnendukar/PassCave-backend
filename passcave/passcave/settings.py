@@ -168,3 +168,17 @@ REST_FRAMEWORK = {
 
 # print(env.list("CORS_ALLOWED_ORIGINS"), ["asda","sad"])
 CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS")
+
+FRONTEND_URLS = {
+    "password_confirm": "http://localhost:3000/password_confirm?token={token}"
+}
+
+# Email settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
