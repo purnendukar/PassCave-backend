@@ -2,7 +2,7 @@
 from django.conf import settings
 
 
-def resolve_frontend_url(name, site_id="frontend", **kwargs):
+def resolve_frontend_url(name, **kwargs):
     """Returns the absolute url for the frontend site
     resolve_front_urls('password-confirm', token="xyz", uuid="abc")
     """

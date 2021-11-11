@@ -57,7 +57,7 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     @action(methods=["POST"], detail=False, permission_classes=[])
-    def password_reset(self, request, *args, **kwargs):
+    def password_reset(self, request):
         data, context = self.request_valiator()
 
         user = User.objects.filter(email=data["email"]).first()
@@ -73,7 +73,7 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
         )
 
     @action(methods=["POST"], detail=False, permission_classes=[])
-    def password_reset_confirm(self, request, *args, **kwargs):
+    def password_reset_confirm(self, request):
         data, context = self.request_valiator()
 
         # Set user password
