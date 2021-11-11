@@ -6,12 +6,28 @@ from apps.user.models import User, UserProfile
 from apps.plan.serializers import PlanSerializer
 
 
-class AuthRequestSerializers(serializers.Serializer):
+class AuthRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
     password = serializers.CharField(required=True)
 
     class Meta:
         fields = ["email", "password"]
+
+
+class PasswordResetSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True)
+
+    class Meta:
+        fields = ["email"]
+
+
+class PasswordResetConfirmSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True)
+    token = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+    class Meta:
+        fields = ["email", "token", "new_password"]
 
 
 class UserProfileResponseSerializer(serializers.ModelSerializer):
@@ -33,7 +49,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         return data
 
 
-class UserAuthSerializers(serializers.ModelSerializer):
+class UserAuthSerializer(serializers.ModelSerializer):
     token = serializers.SerializerMethodField()
     profile = UserProfileResponseSerializer(read_only=True, many=False)
 
