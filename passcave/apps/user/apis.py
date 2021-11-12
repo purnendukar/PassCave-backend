@@ -28,7 +28,7 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
     request_serializer_classes = {
         "signup": AuthRequestSerializer,
         "login": AuthRequestSerializer,
-        "password_reset": PasswordResetSerializer,
+        "forgot_password": PasswordResetSerializer,
         "password_reset_confirm": PasswordResetConfirmSerializer,
     }
 
@@ -56,8 +56,13 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
         request.auth.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    @action(methods=["POST"], detail=False, permission_classes=[])
-    def password_reset(self, request):
+    @action(
+        methods=["POST"],
+        detail=False,
+        permission_classes=[],
+        url_path="forgot-password",
+    )
+    def forgot_password(self, request):
         data, context = self.request_valiator()
 
         user = User.objects.filter(email=data["email"]).first()
@@ -72,7 +77,12 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
             {"message": "Further instructions will be sent to the email if it exists"}
         )
 
-    @action(methods=["POST"], detail=False, permission_classes=[])
+    @action(
+        methods=["POST"],
+        detail=False,
+        permission_classes=[],
+        url_path="password-reset-confirm",
+    )
     def password_reset_confirm(self, request):
         data, context = self.request_valiator()
 
