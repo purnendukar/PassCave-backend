@@ -166,15 +166,14 @@ REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "apps.base.exceptions.exception_handler",
 }
 
-# print(env.list("CORS_ALLOWED_ORIGINS"), ["asda","sad"])
+# CORS settings
 CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS")
 
-FRONTEND_URLS = {
-    "password_confirm": "http://localhost:3000/password_confirm?token={token}"
-}
+FRONTEND_URLS = {"password_confirm": env("FRONTEND_PASSWORD_CONFIRM_URL")}
 
 # Email settings
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
