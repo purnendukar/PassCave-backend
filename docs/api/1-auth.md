@@ -14,6 +14,9 @@ POST /api/auth/signup
 Name     | Description
 ---------|-------------------------------------
 email    | Email of the user
+first_name    | First Name of the user
+last_name    | Last Name of the user
+email    | Email of the user
 password | Password of the user
 
 **Request**
@@ -32,7 +35,9 @@ Status: 201 Created
 ```
 ```json
 {
-    "email": "purnendu.kar8+6@gmail.com",
+    "email": "hello@example.com",
+    "first_name": "first_name",
+    "last_name": "last_name",
     "profile": null,
     "token": "ade1f6798ea28300a3886cd1c62ced05fef66a5a"
 }
@@ -66,7 +71,9 @@ Status: 200 OK
 ```
 ```json
 {
-    "email": "purnendu.kar8@gmail.com",
+    "email": "hello@example.com",
+    "first_name": "first_name",
+    "last_name": "last_name",
     "profile": null,
     "token": "f7949ae8e70876d217b18648ae14b94c9a8a9222"
 }
@@ -120,7 +127,7 @@ new_password    | New Password for the account
 **Request**
 ```json
 {
-    "email": "purnendu.kar8@gmail.com",
+    "email": "hello@example.com",
     "token": "MjRkZDM0MzYtMzJiYi00OTQ2LThhOTgtYzQ2Y2ZhNmEzZmQw::aw0ecv-099b0a07616e897c9bdbd1b3a5845d97",
     "new_password": "Admin@123"
 }
