@@ -51,7 +51,7 @@ class SendTransactionalEmail:
         if self.is_email_enabled():
             message = EmailMultiAlternatives(
                 subject=self.get_email_subject(),
-                body=self.body(),
+                body=self.get_body(),
                 from_email=self.get_from_email(),
                 cc=self.get_cc_emails(),
                 to=self.get_to_emails(),
