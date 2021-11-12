@@ -20,6 +20,8 @@ password | Password of the user
 ```json
 {
     "email": "hello@example.com",
+    "first_name": "first_name",
+    "last_name": "last_name",
     "password": "VerySafePassword0909"
 }
 ```
