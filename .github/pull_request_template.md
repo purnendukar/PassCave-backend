@@ -11,7 +11,7 @@ add your text here...
 -   [ ] API Documentation Updated (if necessary)
 -   [ ] Testcases Updated
 -   [ ] Test all apis to check if working properly.
--   [ ] Description explains the issue resolved and auto*closes related issues
+-   [ ] Description explains the issue resolved and auto-closes related issues
 -   [ ] Updated Changelog
 
 Be kind to code reviewers, try to keep PR as small and focused as possible
