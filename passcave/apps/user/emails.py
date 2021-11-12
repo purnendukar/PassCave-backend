@@ -7,7 +7,7 @@ from apps.user.tokens import get_token_for_password_reset
 class SendPasswordResetEmail(SendTransactionalEmail):
     EMAIL_ENABLED = True
     SUBJECT = "Reset your Password!"
-    TEMPLATE = ""
+    TEMPLATE = "email/forgot_password.html"
 
     def __init__(self, user):
         self.user = user
