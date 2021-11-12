@@ -7,24 +7,23 @@ from apps.plan.serializers import PlanSerializer
 
 
 class AuthRequestSerializer(serializers.Serializer):
-    email = serializers.EmailField(required=True)
-    password = serializers.CharField(required=True)
+    email = serializers.EmailField()
+    password = serializers.CharField()
 
-    class Meta:
-        fields = ["email", "password"]
+
+class SignRequestSerializer(AuthRequestSerializer):
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
 
 
 class PasswordResetSerializer(serializers.Serializer):
-    email = serializers.EmailField(required=True)
-
-    class Meta:
-        fields = ["email"]
+    email = serializers.EmailField()
 
 
 class PasswordResetConfirmSerializer(serializers.Serializer):
-    email = serializers.EmailField(required=True)
-    token = serializers.CharField(required=True)
-    new_password = serializers.CharField(required=True)
+    email = serializers.EmailField()
+    token = serializers.CharField()
+    new_password = serializers.CharField()
 
     class Meta:
         fields = ["email", "token", "new_password"]
@@ -55,7 +54,7 @@ class UserAuthSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["email", "profile", "token"]
+        fields = ["email", "first_name", "last_name", "profile", "token"]
 
     def get_token(self, user):
         token, created = Token.objects.get_or_create(user=user)

@@ -15,6 +15,7 @@ from apps.user.serializers import (
     UserSerializer,
     PasswordResetSerializer,
     PasswordResetConfirmSerializer,
+    SignRequestSerializer,
 )
 from apps.user.tokens import get_user_for_password_reset_token
 from apps.user.emails import SendPasswordResetEmail
@@ -26,7 +27,7 @@ class AuthViewset(base_mixins.MultiRequestValidatorMixin, viewsets.GenericViewSe
     queryset = model.objects.all()
     serializer_class = UserAuthSerializer
     request_serializer_classes = {
-        "signup": AuthRequestSerializer,
+        "signup": SignRequestSerializer,
         "login": AuthRequestSerializer,
         "forgot_password": PasswordResetSerializer,
         "password_reset_confirm": PasswordResetConfirmSerializer,
