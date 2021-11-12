@@ -77,10 +77,10 @@ def parse_field_errors(field, error_msg, error_values, depth=0):
         errors.append(
             {
                 "field": error_msg
-                if error_msg and error_values and isinstance(error_values, list)
+                if error_msg and error_values and not isinstance(error_values, list)
                 else field,
                 "message": " ".join(error_values[error_msg])
-                if error_msg and error_values and isinstance(error_values, list)
+                if error_msg and error_values and not isinstance(error_values, list)
                 else error_msg,
             }
         )
@@ -125,7 +125,7 @@ def format_exception(exc):
                 # validating one of the child items.
                 detail["errors"].append(dict_format_exception(error_key, error_values))
             else:
-                detail["errors"].extends(list_format_exception(error_key, error_values))
+                detail["errors"].extend(list_format_exception(error_key, error_values))
     elif isinstance(exc.detail, list):
         for error_msg in exc.detail:
             detail["errors"].append({"message": error_msg})
@@ -135,7 +135,7 @@ def format_exception(exc):
     return detail
 
 
-def exception_handler(exc):
+def exception_handler(exc, *args):
     """Returns the response that should be used for any given exception.
 
     By default we handle the REST framework `APIException`, and also

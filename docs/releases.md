@@ -48,8 +48,18 @@
 - Add `Post /api/me/` endpoint.
 - Add `PATCH /api/me/` endpoint.
 
+
 ## Dev (10/10/2021 -- 10/10/2021)
 
 **10/10/2021**
 
 - DRF default custom exception handler added
+
+
+## Dev (11/10/2021 -- 12/10/2021)
+
+**12/10/2021**
+
+- Add `Post /api/auth/forgot-password` endpoint.
+- Add `PATCH /api/auth/password-reset-confirm` endpoint.
+- Added Email Functionality
