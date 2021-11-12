@@ -80,6 +80,18 @@ Status: 200 OK
 ```
 
 
+## Logout
+
+```
+POST /api/auth/logout (requires authentication)
+```
+
+**Response**
+```
+Status: 204 No Content
+```
+
+
 ## Forgot Password
 
 ```

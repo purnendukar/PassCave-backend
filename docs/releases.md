@@ -60,6 +60,7 @@
 
 **12/10/2021**
 
+- Add `PATCH /api/auth/logout` endpoint.
 - Add `Post /api/auth/forgot-password` endpoint.
 - Add `PATCH /api/auth/password-reset-confirm` endpoint.
 - Added Email Functionality
