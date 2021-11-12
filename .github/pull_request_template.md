@@ -1,9 +1,10 @@
-> # Pull Request
-> ## Small Description of change
+# Pull Request
+
+## Small Description of change
 
 add your text here...
 
-> ## Self tasks
+## Self tasks
 
 *   [ ] Self Reviewed
 *   [ ] Code is well commented, linted and follows project conventions
