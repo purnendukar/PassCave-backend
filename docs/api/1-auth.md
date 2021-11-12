@@ -70,3 +70,66 @@ Status: 200 OK
 }
 ```
 
+
+## Forgot Password
+
+```
+POST /api/auth/forgot-password
+```
+
+**Parameters**
+
+Name     | Description
+---------|-------------------------------------
+email    | Email of the user
+
+**Request**
+```json
+{
+    "email": "hello@example.com"
+}
+```
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+    "message": "Further instructions will be sent to the email if it exists"
+}
+```
+
+
+## Reset Password
+
+```
+POST /api/auth/password-reset-confirm
+```
+
+**Parameters**
+
+Name     | Description
+---------|-------------------------------------
+email    | Email of the user
+token    | Token for forgot password confirmation
+new_password    | New Password for the account
+
+**Request**
+```json
+{
+    "email": "purnendu.kar8@gmail.com",
+    "token": "MjRkZDM0MzYtMzJiYi00OTQ2LThhOTgtYzQ2Y2ZhNmEzZmQw::aw0ecv-099b0a07616e897c9bdbd1b3a5845d97",
+    "new_password": "Admin@123"
+}
+```
+
+**Response**
+```
+Status: 204 No Content
+```
+```json
+{
+    "message": "Further instructions will be sent to the email if it exists"
+}
+```
