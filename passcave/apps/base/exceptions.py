@@ -144,7 +144,6 @@ def exception_handler(exc, *args):
     Any unhandled exceptions may return `None`, which will cause a 500 error
     to be raised.
     """
-    print(args, exc)
     response = None
 
     if isinstance(exc, exceptions.APIException):
