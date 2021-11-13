@@ -1,4 +1,7 @@
 from django.db import models
+from django.conf import settings
+
+from encrypted_fields import fields
 
 from apps.base.models import BaseModel
 from apps.user.models import User
@@ -33,42 +36,66 @@ class BankCard(BaseModel, AbstractCredentialModel):
     ]
     YEAR_CHOICES = [(str(year), str(year)) for year in range(2020, 2030)]
 
-    card_number = models.CharField(max_length=4 * 4, null=False, blank=False)
-    expire_month = models.CharField(
-        max_length=2, choices=MONTH_CHOICES, null=False, blank=False
+    _card_number = fields.EncryptedCharField(max_length=4 * 4)
+    card_number = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_card_number"
     )
-    expire_year = models.CharField(
-        max_length=4, choices=YEAR_CHOICES, null=False, blank=False
+    expire_month = models.CharField(max_length=2, choices=MONTH_CHOICES)
+    expire_year = models.CharField(max_length=4, choices=YEAR_CHOICES)
+    _cvv = fields.EncryptedCharField(max_length=3)
+    cvv = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_cvv"
     )
-    cvv = models.CharField(max_length=3, null=False, blank=False)
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
-    card_type = models.CharField(
-        max_length=20, choices=CARD_TYPE_CHOICE, null=False, blank=False, default=4
-    )
+    card_type = models.CharField(max_length=20, choices=CARD_TYPE_CHOICE, default=4)
 
 
 class BankDetail(BaseModel, AbstractCredentialModel):
-    account_number = models.CharField(max_length=30, null=False, blank=False)
-    ifsc_code = models.CharField(max_length=20, null=False, blank=False)
-    branch_code = models.CharField(max_length=20, null=False, blank=False)
+    _account_number = fields.EncryptedCharField(max_length=30)
+    account_number = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_account_number"
+    )
+    _ifsc_code = fields.EncryptedCharField(max_length=20)
+    ifsc_code = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_ifsc_code"
+    )
+    branch_code = models.CharField(max_length=20)
     branch_name = models.CharField(max_length=100, null=True, blank=True)
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
 
 
 class WebApplication(BaseModel, AbstractCredentialModel):
-    url = models.CharField(max_length=255, null=False, blank=False)
-    username = models.CharField(max_length=255, null=True, blank=True)
-    mobile = models.CharField(max_length=15, null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
-    password = models.CharField(max_length=255, null=True, blank=True)
+    url = models.CharField(max_length=255)
+    _username = fields.EncryptedCharField(max_length=255, null=True, blank=True)
+    username = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_username"
+    )
+    _mobile = fields.EncryptedCharField(max_length=15, null=True, blank=True)
+    mobile = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_mobile"
+    )
+    _email = fields.EncryptedEmailField(null=True, blank=True)
+    email = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_email"
+    )
+    _password = fields.EncryptedCharField(max_length=255, null=True, blank=True)
+    password = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_password"
+    )
 
 
 class UPIGateway(BaseModel, AbstractCredentialModel):
-    upi_id = models.CharField(max_length=255, null=False, blank=False)
+    _upi_id = fields.EncryptedCharField(max_length=255)
+    upi_id = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_upi_id"
+    )
     portal = models.CharField(max_length=255, null=True, blank=True)
-    pin = models.CharField(max_length=255, null=True, blank=True)
+    _pin = fields.EncryptedCharField(max_length=8, null=True, blank=True)
+    pin = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_pin"
+    )
 
     class Meta:
         verbose_name = "UPI gateway"
@@ -76,13 +103,16 @@ class UPIGateway(BaseModel, AbstractCredentialModel):
 
 
 class SecretNote(BaseModel, AbstractCredentialModel):
-    topic = models.CharField(max_length=100, null=False, blank=False)
-    note = models.TextField(null=False, blank=True)
+    topic = models.CharField(max_length=100)
+    _note = fields.EncryptedTextField(blank=True)
+    note = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_note"
+    )
 
 
 class Identity(BaseModel, AbstractCredentialModel):
-    id_name = models.CharField(max_length=100, null=False, blank=False)
-    id_number = models.CharField(max_length=100, null=False, blank=False)
+    id_name = models.CharField(max_length=100)
+    id_number = models.CharField(max_length=100)
     image = models.ImageField(null=True, blank=True)
 
     class Meta:
