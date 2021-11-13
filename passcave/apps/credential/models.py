@@ -87,7 +87,10 @@ class WebApplication(BaseModel, AbstractCredentialModel):
 
 
 class UPIGateway(BaseModel, AbstractCredentialModel):
-    upi_id = models.CharField(max_length=255)
+    _upi_id = fields.EncryptedCharField(max_length=255)
+    upi_id = fields.SearchField(
+        hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_upi_id"
+    )
     portal = models.CharField(max_length=255, null=True, blank=True)
     _pin = fields.EncryptedCharField(max_length=8, null=True, blank=True)
     pin = fields.SearchField(
