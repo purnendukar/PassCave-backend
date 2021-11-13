@@ -64,3 +64,10 @@
 - Add `Post /api/auth/forgot-password` endpoint.
 - Add `PATCH /api/auth/password-reset-confirm` endpoint.
 - Added Email Functionality
+
+
+## Dev (13/10/2021 -- 13/10/2021)
+
+**13/10/2021**
+
+- Replace Credentials model fields with encryption field
