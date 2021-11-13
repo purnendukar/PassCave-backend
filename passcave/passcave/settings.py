@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework.authtoken",
+    "encrypted_fields",
     "corsheaders",
     "apps.user",
     "apps.plan",
@@ -181,3 +182,7 @@ EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_USE_TLS = True
 
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+
+# Model Field Encryption
+FIELD_ENCRYPTION_KEYS = env.list("FIELD_ENCRYPTION_KEYS")
+SEARCH_HASH_KEY = env("SEARCH_HASH_KEY")
