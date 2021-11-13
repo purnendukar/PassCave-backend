@@ -1,5 +1,4 @@
 from django.contrib import admin
-from encrypted_fields import fields
 
 from apps.credential.models import (
     BankCard,
