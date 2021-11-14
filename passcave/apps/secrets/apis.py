@@ -28,6 +28,10 @@ class CredentialMixin:
         queryset.filter(owned_by=self.request.user)
         return queryset
 
+    def perform_create(self, serializer):
+        secret_obj = serializer.save()
+        secret_obj.secret.create(title=self.request.data.get("title", ""))
+
     def create(self, request, *args, **kwargs):
         request.data["owned_by"] = request.user.id
         return super().create(request, *args, **kwargs)
