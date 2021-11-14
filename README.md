@@ -1,6 +1,7 @@
 # PassCave (Backend)
 
 [![Documentation Status](https://readthedocs.org/projects/passcave-backend/badge/?version=latest)](https://passcave-backend.readthedocs.io/en/latest/?badge=latest)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/aadbcb475f0a4559ac8a6a0d974bf60b)](https://www.codacy.com/gh/purnendukar/PassCave-backend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=purnendukar/PassCave-backend&amp;utm_campaign=Badge_Grade)
 
 Backend server which has the REST API for password management services.
 
