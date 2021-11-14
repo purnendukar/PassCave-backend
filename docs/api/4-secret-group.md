@@ -36,7 +36,7 @@ POST /api/secret_group (requires authentication)
 Name     | Description
 ---------|-------------------------------------
 grp_type | Group Type (personal, orgnisation)
-members | List of user ids who can access this credential
+members | List of user ids who can access this secrets
 name | Name of the group
 
 **Request**
@@ -79,7 +79,7 @@ PATCH /api/secret_group (requires authentication)
 Name     | Description
 ---------|-------------------------------------
 grp_type | Group Type (personal, orgnisation)
-members | List of user ids who can access this credential
+members | List of user ids who can access this secrets
 name | Name of the group
 
 **Request**

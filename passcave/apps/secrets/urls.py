@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-from apps.credential.apis import (
+from apps.secrets.apis import (
     BankCardViewSet,
     BankDetailViewSet,
     SecretNoteViewSet,

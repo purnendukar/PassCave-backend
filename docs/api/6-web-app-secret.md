@@ -48,7 +48,8 @@ Status: 200 OK
                     "first_name": "",
                     "last_name": ""
                 }
-            ]
+            ],
+            "title": "title"
         }
     ]
 }
@@ -57,7 +58,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/web_application/:id (requires authentication)
+GET /api/secrets/web_application/:id (requires authentication)
 ```
 
 **Response**
@@ -91,14 +92,15 @@ Status: 200 OK
             "first_name": "",
             "last_name": ""
         }
-    ]
+    ],
+    "title": "title"
 }
 ```
 
 ### Create new data
 
 ```
-POST /api/credentials/web_application (requires authentication)
+POST /api/secrets/web_application (requires authentication)
 ```
 
 **Parameters**
@@ -109,7 +111,7 @@ username | Username used for the website login
 mobile | Mobile number used for the website login
 email | Email used for the website login
 url | Website URL
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -122,7 +124,8 @@ access_given | List of user ids who can access this credential
     "access_given": [
         "0e51875b-6786-4604-8c86-e7c6ab9ff516",
         "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
-    ]
+    ],
+    "title": "title"
 }
 ```
 
@@ -157,14 +160,15 @@ Status: 201 Created
             "first_name": "",
             "last_name": ""
         }
-    ]
+    ],
+    "title": "title"
 }
 ```
 
 ### Partial Update
 
 ```
-PATCH /api/credentials/web_application/:id (requires authentication)
+PATCH /api/secrets/web_application/:id (requires authentication)
 ```
 
 **Parameters**
@@ -175,7 +179,7 @@ username | Username used for the website login
 mobile | Mobile number used for the website login
 email | Email used for the website login
 url | Website URL
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -188,7 +192,8 @@ access_given | List of user ids who can access this credential
     "access_given": [
         "0e51875b-6786-4604-8c86-e7c6ab9ff516",
         "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
-    ]
+    ],
+    "title": "title"
 }
 ```
 
@@ -223,6 +228,7 @@ Status: 200 OK
             "first_name": "",
             "last_name": ""
         }
-    ]
+    ],
+    "title": "title"
 }
 ```

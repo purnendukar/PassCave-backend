@@ -1,13 +1,22 @@
 from django.contrib import admin
+from django.contrib.contenttypes.admin import GenericStackedInline
 
-from apps.credential.models import (
+from apps.secrets.models import (
     BankCard,
     BankDetail,
     WebApplication,
     UPIGateway,
     SecretNote,
     Identity,
+    Secret,
 )
+
+
+class SecretInline(GenericStackedInline):
+    ct_field = "secret_type"
+    ct_fk_field = "secret_id"
+    model = Secret
+    extra = 0
 
 
 class BaseAdmin(admin.ModelAdmin):
@@ -64,6 +73,7 @@ class WebApplicationAdmin(BaseAdmin):
         "password",
     )
     search_fields = ("owned_by", "url", "username", "mobile", "email")
+    inlines = (SecretInline,)
 
 
 class UPIGatewayAdmin(BaseAdmin):
