@@ -12,8 +12,8 @@ GET /api/secrets (requires authentication)
 ```
 
 !!! Note
-    **secret_type:** ("webapplication", "bankcard", "bankdetail", "indentity", "secretnote", "upigateway)
-    **secret_object** is an dynamic json object that is based on secret_type
+    - **secret_type:** ("webapplication", "bankcard", "bankdetail", "indentity", "secretnote", "upigateway)
+    - **secret_object** is an dynamic json object that is based on secret_type
 
 **Response**
 ```
