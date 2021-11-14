@@ -45,7 +45,9 @@ Status: 200 OK
                     "first_name": "",
                     "last_name": ""
                 }
-            ]
+            ],
+            "title": "title",
+            "title": "title"
         }
     ]
 }
@@ -85,7 +87,8 @@ Status: 200 OK
             "first_name": "",
             "last_name": ""
         }
-    ]
+    ],
+    "title": "title"
 }
 ```
 
@@ -111,7 +114,8 @@ access_given | List of user ids who can access this secrets
     "access_given": [
         "0e51875b-6786-4604-8c86-e7c6ab9ff516",
         "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
-    ]
+    ],
+    "title": "title"
 }
 ```
 
@@ -143,7 +147,8 @@ Status: 201 Created
             "first_name": "",
             "last_name": ""
         }
-    ]
+    ],
+    "title": "title"
 }
 ```
 
@@ -169,7 +174,8 @@ access_given | List of user ids who can access this secrets
     "access_given": [
         "0e51875b-6786-4604-8c86-e7c6ab9ff516",
         "24dd3436-32bb-4946-8a98-c46cfa6a3fd0"
-    ]
+    ],
+    "title": "title"
 }
 ```
 
@@ -201,6 +207,7 @@ Status: 200 OK
             "first_name": "",
             "last_name": ""
         }
-    ]
+    ],
+    "title": "title"
 }
 ```

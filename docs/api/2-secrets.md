@@ -53,7 +53,8 @@ Status: 200 OK
                         "first_name": "",
                         "last_name": ""
                     }
-                ]
+                ],
+                "title": "title"
             }
         }
     ]

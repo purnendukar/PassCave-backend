@@ -73,7 +73,7 @@ class BankCard(BaseModel, AbstractCredentialModel):
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
     card_type = models.CharField(max_length=20, choices=CARD_TYPE_CHOICE, default=4)
-    bank_card = GenericRelation(
+    secret = GenericRelation(
         Secret,
         object_id_field="secret_id",
         content_type_field="secret_type",
@@ -95,7 +95,7 @@ class BankDetail(BaseModel, AbstractCredentialModel):
     branch_name = models.CharField(max_length=100, null=True, blank=True)
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
-    bank_detail = GenericRelation(
+    secret = GenericRelation(
         Secret,
         object_id_field="secret_id",
         content_type_field="secret_type",
@@ -122,7 +122,7 @@ class WebApplication(BaseModel, AbstractCredentialModel):
     password = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_password"
     )
-    web_app = GenericRelation(
+    secret = GenericRelation(
         Secret,
         object_id_field="secret_id",
         content_type_field="secret_type",
@@ -141,7 +141,7 @@ class UPIGateway(BaseModel, AbstractCredentialModel):
     pin = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_pin"
     )
-    upi_gateway = GenericRelation(
+    secret = GenericRelation(
         Secret,
         object_id_field="secret_id",
         content_type_field="secret_type",
@@ -160,7 +160,7 @@ class SecretNote(BaseModel, AbstractCredentialModel):
     note = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_note"
     )
-    secret_note = GenericRelation(
+    secret = GenericRelation(
         Secret,
         object_id_field="secret_id",
         content_type_field="secret_type",
@@ -173,7 +173,7 @@ class Identity(BaseModel, AbstractCredentialModel):
     id_name = models.CharField(max_length=100)
     id_number = models.CharField(max_length=100)
     image = models.ImageField(null=True, blank=True)
-    identity = GenericRelation(
+    secret = GenericRelation(
         Secret,
         object_id_field="secret_id",
         content_type_field="secret_type",

@@ -14,6 +14,8 @@ from apps.user.serializers import UserSerializer
 
 
 class BaseSerializer(serializers.Serializer):
+    title = serializers.SerializerMethodField()
+
     def to_representation(self, instance):
         data = super().to_representation(instance)
         if instance:
@@ -24,7 +26,10 @@ class BaseSerializer(serializers.Serializer):
         return data
 
     class Meta:
-        fields = ["owned_by", "access_given"]
+        fields = ["owned_by", "access_given", "title"]
+
+    def get_title(self, obj):
+        return obj.secret.all().first().title
 
 
 class BankCardSerializer(BaseSerializer, serializers.ModelSerializer):
