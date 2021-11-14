@@ -9,7 +9,7 @@
 Get list of bank card details that is owned by the user.
 
 ```
-GET /api/credentials/bank_card (requires authentication)
+GET /api/secrets/bank_card (requires authentication)
 ```
 
 **Response**
@@ -53,7 +53,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/bank_card/:id (requires authentication)
+GET /api/secrets/bank_card/:id (requires authentication)
 ```
 
 **Response**
@@ -91,7 +91,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/bank_card (requires authentication)
+POST /api/secrets/bank_card (requires authentication)
 ```
 
 **Parameters**
@@ -106,7 +106,7 @@ holder_name | Holder Name
 bank | Bank Name
 card_type | Card Type (credit_card, debit_card, atm_card, other)
 bank | Bank Name
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -166,7 +166,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/bank_card/:id (requires authentication)
+PATCH /api/secrets/bank_card/:id (requires authentication)
 ```
 
 **Parameters**
@@ -180,7 +180,7 @@ cvv | Card CVV Number
 holder_name | Holder Name
 bank | Bank Name
 card_type | Card Type (credit_card, debit_card, atm_card, other)
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -243,7 +243,7 @@ Status: 200 OK
 Get list of bank details that is owned by the user.
 
 ```
-GET /api/credentials/bank_detail (requires authentication)
+GET /api/secrets/bank_detail (requires authentication)
 ```
 
 **Response**
@@ -288,7 +288,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/bank_detail/:id (requires authentication)
+GET /api/secrets/bank_detail/:id (requires authentication)
 ```
 
 **Response**
@@ -324,7 +324,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/bank_detail (requires authentication)
+POST /api/secrets/bank_detail (requires authentication)
 ```
 
 **Parameters**
@@ -337,7 +337,7 @@ branch_code | Branch Code
 branch_name | Branch Name
 holder_name | Holder Name
 bank | Bank Name
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -394,7 +394,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/bank_detail/:id (requires authentication)
+PATCH /api/secrets/bank_detail/:id (requires authentication)
 ```
 
 **Parameters**
@@ -407,7 +407,7 @@ branch_code | Branch Code
 branch_name | Branch Name
 holder_name | Holder Name
 bank | Bank Name
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -468,7 +468,7 @@ Status: 200 OK
 Get list of upi gateway details that is owned by the user.
 
 ```
-GET /api/credentials/upi_gateway (requires authentication)
+GET /api/secrets/upi_gateway (requires authentication)
 ```
 
 **Response**
@@ -514,7 +514,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/upi_gateway/:id (requires authentication)
+GET /api/secrets/upi_gateway/:id (requires authentication)
 ```
 
 **Response**
@@ -553,7 +553,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/upi_gateway (requires authentication)
+POST /api/secrets/upi_gateway (requires authentication)
 ```
 
 **Parameters**
@@ -563,7 +563,7 @@ Name     | Description
 upi_id | UPI ID
 portal | Portal Name
 pin | UPI Pin
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -614,7 +614,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/upi_gateway/:id (requires authentication)
+PATCH /api/secrets/upi_gateway/:id (requires authentication)
 ```
 
 **Parameters**
@@ -624,7 +624,7 @@ Name     | Description
 upi_id | UPI ID
 portal | Portal Name
 pin | UPI Pin
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json

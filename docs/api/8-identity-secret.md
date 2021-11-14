@@ -9,7 +9,7 @@
 Get list of identity details that is owned by the user.
 
 ```
-GET /api/credentials/identity (requires authentication)
+GET /api/secrets/identity (requires authentication)
 ```
 
 **Response**
@@ -49,7 +49,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/indentity/:id (requires authentication)
+GET /api/secrets/indentity/:id (requires authentication)
 ```
 
 **Response**
@@ -82,7 +82,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/identity (requires authentication)
+POST /api/secrets/identity (requires authentication)
 ```
 
 **Parameters**
@@ -91,7 +91,7 @@ Name     | Description
 ---------|-------------------------------------
 id_name | ID Name
 id_number | ID Number
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 image | Image object 
 
 !!! Note
@@ -146,7 +146,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/identity/:id (requires authentication)
+PATCH /api/secrets/identity/:id (requires authentication)
 ```
 
 **Parameters**
@@ -155,7 +155,7 @@ Name     | Description
 ---------|-------------------------------------
 id_name | ID Name
 id_number | ID Number
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 image | Image object 
 
 !!! Note

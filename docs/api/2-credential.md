@@ -9,7 +9,7 @@
 Get list of bank card details that is owned by the user.
 
 ```
-GET /api/credentials/bank_card (requires authentication)
+GET /api/secrets/bank_card (requires authentication)
 ```
 
 **Response**
@@ -55,7 +55,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/bank_card/:id (requires authentication)
+GET /api/secrets/bank_card/:id (requires authentication)
 ```
 
 **Response**
@@ -95,7 +95,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/bank_card (requires authentication)
+POST /api/secrets/bank_card (requires authentication)
 ```
 
 **Parameters**
@@ -110,7 +110,7 @@ holder_name | Holder Name
 bank | Bank Name
 card_type | Card Type (credit_card, debit_card, atm_card, other)
 bank | Bank Name
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -172,7 +172,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/bank_card/:id (requires authentication)
+PATCH /api/secrets/bank_card/:id (requires authentication)
 ```
 
 **Parameters**
@@ -186,7 +186,7 @@ cvv | Card CVV Number
 holder_name | Holder Name
 bank | Bank Name
 card_type | Card Type (credit_card, debit_card, atm_card, other)
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -251,7 +251,7 @@ Status: 200 OK
 Get list of bank details that is owned by the user.
 
 ```
-GET /api/credentials/bank_detail (requires authentication)
+GET /api/secrets/bank_detail (requires authentication)
 ```
 
 **Response**
@@ -296,7 +296,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/bank_detail/:id (requires authentication)
+GET /api/secrets/bank_detail/:id (requires authentication)
 ```
 
 **Response**
@@ -334,7 +334,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/bank_detail (requires authentication)
+POST /api/secrets/bank_detail (requires authentication)
 ```
 
 **Parameters**
@@ -347,7 +347,7 @@ branch_code | Branch Code
 branch_name | Branch Name
 holder_name | Holder Name
 bank | Bank Name
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -406,7 +406,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/bank_detail/:id (requires authentication)
+PATCH /api/secrets/bank_detail/:id (requires authentication)
 ```
 
 **Parameters**
@@ -419,7 +419,7 @@ branch_code | Branch Code
 branch_name | Branch Name
 holder_name | Holder Name
 bank | Bank Name
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -482,7 +482,7 @@ Status: 200 OK
 Get list of upi gateway details that is owned by the user.
 
 ```
-GET /api/credentials/upi_gateway (requires authentication)
+GET /api/secrets/upi_gateway (requires authentication)
 ```
 
 **Response**
@@ -530,7 +530,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/upi_gateway/:id (requires authentication)
+GET /api/secrets/upi_gateway/:id (requires authentication)
 ```
 
 **Response**
@@ -571,7 +571,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/upi_gateway (requires authentication)
+POST /api/secrets/upi_gateway (requires authentication)
 ```
 
 **Parameters**
@@ -581,7 +581,7 @@ Name     | Description
 upi_id | UPI ID
 portal | Portal Name
 pin | UPI Pin
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -634,7 +634,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/upi_gateway/:id (requires authentication)
+PATCH /api/secrets/upi_gateway/:id (requires authentication)
 ```
 
 **Parameters**
@@ -644,7 +644,7 @@ Name     | Description
 upi_id | UPI ID
 portal | Portal Name
 pin | UPI Pin
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -701,7 +701,7 @@ Status: 200 OK
 Get list of identity details that is owned by the user.
 
 ```
-GET /api/credentials/identity (requires authentication)
+GET /api/secrets/identity (requires authentication)
 ```
 
 **Response**
@@ -743,7 +743,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/indentity/:id (requires authentication)
+GET /api/secrets/indentity/:id (requires authentication)
 ```
 
 **Response**
@@ -778,7 +778,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/identity (requires authentication)
+POST /api/secrets/identity (requires authentication)
 ```
 
 **Parameters**
@@ -787,7 +787,7 @@ Name     | Description
 ---------|-------------------------------------
 id_name | ID Name
 id_number | ID Number
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 image | Image object 
 
 !!! Note
@@ -844,7 +844,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/identity/:id (requires authentication)
+PATCH /api/secrets/identity/:id (requires authentication)
 ```
 
 **Parameters**
@@ -853,7 +853,7 @@ Name     | Description
 ---------|-------------------------------------
 id_name | ID Name
 id_number | ID Number
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 image | Image object 
 
 !!! Note
@@ -964,7 +964,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/web_application/:id (requires authentication)
+GET /api/secrets/web_application/:id (requires authentication)
 ```
 
 **Response**
@@ -1007,7 +1007,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/web_application (requires authentication)
+POST /api/secrets/web_application (requires authentication)
 ```
 
 **Parameters**
@@ -1018,7 +1018,7 @@ username | Username used for the website login
 mobile | Mobile number used for the website login
 email | Email used for the website login
 url | Website URL
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -1075,7 +1075,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/web_application/:id (requires authentication)
+PATCH /api/secrets/web_application/:id (requires authentication)
 ```
 
 **Parameters**
@@ -1086,7 +1086,7 @@ username | Username used for the website login
 mobile | Mobile number used for the website login
 email | Email used for the website login
 url | Website URL
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -1194,7 +1194,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/secret_note/:id (requires authentication)
+GET /api/secrets/secret_note/:id (requires authentication)
 ```
 
 **Response**
@@ -1234,7 +1234,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/secret_note (requires authentication)
+POST /api/secrets/secret_note (requires authentication)
 ```
 
 **Parameters**
@@ -1243,7 +1243,7 @@ Name     | Description
 ---------|-------------------------------------
 topic | Topic/Heading for the note
 note | Note 
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -1294,7 +1294,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/secret_note/:id (requires authentication)
+PATCH /api/secrets/secret_note/:id (requires authentication)
 ```
 
 **Parameters**
@@ -1303,7 +1303,7 @@ Name     | Description
 ---------|-------------------------------------
 topic | Topic/Heading for the note
 note | Note 
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json

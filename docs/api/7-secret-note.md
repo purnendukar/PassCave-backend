@@ -54,7 +54,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/secret_note/:id (requires authentication)
+GET /api/secrets/secret_note/:id (requires authentication)
 ```
 
 **Response**
@@ -92,7 +92,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/secret_note (requires authentication)
+POST /api/secrets/secret_note (requires authentication)
 ```
 
 **Parameters**
@@ -101,7 +101,7 @@ Name     | Description
 ---------|-------------------------------------
 topic | Topic/Heading for the note
 note | Note 
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -150,7 +150,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/secret_note/:id (requires authentication)
+PATCH /api/secrets/secret_note/:id (requires authentication)
 ```
 
 **Parameters**
@@ -159,7 +159,7 @@ Name     | Description
 ---------|-------------------------------------
 topic | Topic/Heading for the note
 note | Note 
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json

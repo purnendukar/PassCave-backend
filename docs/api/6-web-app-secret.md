@@ -57,7 +57,7 @@ Status: 200 OK
 ### Get Object
 
 ```
-GET /api/credentials/web_application/:id (requires authentication)
+GET /api/secrets/web_application/:id (requires authentication)
 ```
 
 **Response**
@@ -98,7 +98,7 @@ Status: 200 OK
 ### Create new data
 
 ```
-POST /api/credentials/web_application (requires authentication)
+POST /api/secrets/web_application (requires authentication)
 ```
 
 **Parameters**
@@ -109,7 +109,7 @@ username | Username used for the website login
 mobile | Mobile number used for the website login
 email | Email used for the website login
 url | Website URL
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
@@ -164,7 +164,7 @@ Status: 201 Created
 ### Partial Update
 
 ```
-PATCH /api/credentials/web_application/:id (requires authentication)
+PATCH /api/secrets/web_application/:id (requires authentication)
 ```
 
 **Parameters**
@@ -175,7 +175,7 @@ username | Username used for the website login
 mobile | Mobile number used for the website login
 email | Email used for the website login
 url | Website URL
-access_given | List of user ids who can access this credential
+access_given | List of user ids who can access this secrets
 
 **Request**
 ```json
