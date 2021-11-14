@@ -4,11 +4,13 @@ from django.urls.conf import include
 from rest_framework.routers import DefaultRouter
 
 from apps.user.apis import AuthViewset
+from apps.secrets.apis import SecretViewSet
 
 
 default_router = DefaultRouter(trailing_slash=False)
 
 default_router.register("auth", AuthViewset, basename="auth")
+default_router.register("secrets", SecretViewSet, basename="secret")
 
 
 urlpatterns = [

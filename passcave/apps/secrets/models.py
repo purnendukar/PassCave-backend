@@ -5,10 +5,20 @@ from django.contrib.contenttypes.models import ContentType
 
 from encrypted_fields import fields
 
+import calendar
+
 from apps.base.models import BaseModel
 from apps.user.models import User
 
-import calendar
+
+SECRET_CHOICES = (
+    models.Q(app_label="secrets", model="bankcard")
+    | models.Q(app_label="secrets", model="bankdetail")
+    | models.Q(app_label="secrets", model="webapplication")
+    | models.Q(app_label="secrets", model="upigateway")
+    | models.Q(app_label="secrets", model="secretnote")
+    | models.Q(app_label="secrets", model="identity")
+)
 
 
 class AbstractCredentialModel(models.Model):
@@ -16,24 +26,28 @@ class AbstractCredentialModel(models.Model):
         to=User,
         on_delete=models.CASCADE,
         related_name="owned_%(class)s_cred",
-        null=False,
-        blank=False,
     )
-    access_given = models.ManyToManyField(
-        to=User,
-        related_name="%(class)s_access_cred",
-    )
+    access_given = models.ManyToManyField(to=User, related_name="%(class)s_access_cred")
 
     class Meta:
         abstract = True
 
 
-class Secret(models.Model):
+class Secret(BaseModel):
     title = models.CharField(max_length=255)
     # Below the mandatory fields for generic relation
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.UUIDField()
-    secret_object = GenericForeignKey()
+    secret_type = models.ForeignKey(
+        ContentType, limit_choices_to=SECRET_CHOICES, on_delete=models.CASCADE
+    )
+    secret_id = models.UUIDField()
+    secret_object = GenericForeignKey(ct_field="secret_type", fk_field="secret_id")
+
+    class Meta:
+        unique_together = ("secret_type", "secret_id")
+        ordering = ("title",)
+
+    def __str__(self) -> str:
+        return self.title
 
 
 class BankCard(BaseModel, AbstractCredentialModel):
@@ -59,7 +73,13 @@ class BankCard(BaseModel, AbstractCredentialModel):
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
     card_type = models.CharField(max_length=20, choices=CARD_TYPE_CHOICE, default=4)
-    bank_card = GenericRelation(Secret, related_query_name="bank_cards")
+    bank_card = GenericRelation(
+        Secret,
+        object_id_field="secret_id",
+        content_type_field="secret_type",
+        limit_choices_to=SECRET_CHOICES,
+        related_query_name="bank_cards",
+    )
 
 
 class BankDetail(BaseModel, AbstractCredentialModel):
@@ -75,7 +95,13 @@ class BankDetail(BaseModel, AbstractCredentialModel):
     branch_name = models.CharField(max_length=100, null=True, blank=True)
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
-    bank_detail = GenericRelation(Secret, related_query_name="bank_details")
+    bank_detail = GenericRelation(
+        Secret,
+        object_id_field="secret_id",
+        content_type_field="secret_type",
+        limit_choices_to=SECRET_CHOICES,
+        related_query_name="bank_details",
+    )
 
 
 class WebApplication(BaseModel, AbstractCredentialModel):
@@ -96,7 +122,13 @@ class WebApplication(BaseModel, AbstractCredentialModel):
     password = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_password"
     )
-    web_app = GenericRelation(Secret, related_query_name="web_apps")
+    web_app = GenericRelation(
+        Secret,
+        object_id_field="secret_id",
+        content_type_field="secret_type",
+        limit_choices_to=SECRET_CHOICES,
+        related_query_name="web_apps",
+    )
 
 
 class UPIGateway(BaseModel, AbstractCredentialModel):
@@ -109,7 +141,13 @@ class UPIGateway(BaseModel, AbstractCredentialModel):
     pin = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_pin"
     )
-    upi_gateway = GenericRelation(Secret, related_query_name="upi_gateways")
+    upi_gateway = GenericRelation(
+        Secret,
+        object_id_field="secret_id",
+        content_type_field="secret_type",
+        limit_choices_to=SECRET_CHOICES,
+        related_query_name="upi_gateways",
+    )
 
     class Meta:
         verbose_name = "UPI gateway"
@@ -122,14 +160,26 @@ class SecretNote(BaseModel, AbstractCredentialModel):
     note = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_note"
     )
-    secret_note = GenericRelation(Secret, related_query_name="secret_notes")
+    secret_note = GenericRelation(
+        Secret,
+        object_id_field="secret_id",
+        content_type_field="secret_type",
+        limit_choices_to=SECRET_CHOICES,
+        related_query_name="secret_notes",
+    )
 
 
 class Identity(BaseModel, AbstractCredentialModel):
     id_name = models.CharField(max_length=100)
     id_number = models.CharField(max_length=100)
     image = models.ImageField(null=True, blank=True)
-    identity = GenericRelation(Secret, related_query_name="identities")
+    identity = GenericRelation(
+        Secret,
+        object_id_field="secret_id",
+        content_type_field="secret_type",
+        limit_choices_to=SECRET_CHOICES,
+        related_query_name="identities",
+    )
 
     class Meta:
         verbose_name_plural = "Identities"

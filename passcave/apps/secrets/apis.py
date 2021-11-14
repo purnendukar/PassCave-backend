@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from rest_framework import mixins, viewsets
 
 from apps.secrets.models import (
@@ -33,7 +35,19 @@ class CredentialMixin:
 
 class SecretViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Secret.objects.all()
-    serializer_class = IdentitySerializer
+    serializer_class = SecretSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset.filter(
+            Q(web_apps__owned_by=self.request.user)
+            | Q(bank_cards__owned_by=self.request.user)
+            | Q(bank_details__owned_by=self.request.user)
+            | Q(secret_notes__owned_by=self.request.user)
+            | Q(upi_gateways__owned_by=self.request.user)
+            | Q(identities__owned_by=self.request.user)
+        )
+        return queryset
 
 
 class BankCardViewSet(CredentialMixin, viewsets.ModelViewSet):

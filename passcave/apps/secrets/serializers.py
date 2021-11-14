@@ -98,13 +98,15 @@ class SecretSerializer(serializers.ModelSerializer):
     }
 
     secret_type = serializers.SerializerMethodField()
+    secret_object = serializers.SerializerMethodField()
 
     class Meta:
         model = Secret
         fields = ["secret_type", "secret_object"]
 
     def get_secret_type(self, obj):
-        return obj.content_type.model
+        return obj.secret_type.model
 
     def get_secret_object(self, obj):
-        return self._model_serializers[obj.content_type.model](obj.secret_object).data
+        serializer = self._model_serializers[obj.secret_type.model](obj.secret_object)
+        return serializer.data
