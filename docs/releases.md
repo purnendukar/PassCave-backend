@@ -53,6 +53,8 @@
 
 **14/10/2021**
 
+- Add `GET /api/secrets` endpoint.
+
 - Add `GET /api/secrets/bank_card` endpoint.
 - Add `POST /api/secrets/bank_card` endpoint.
 - Add `PATCH /api/secrets/bank_card` endpoint.
