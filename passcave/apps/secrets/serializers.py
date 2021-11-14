@@ -1,4 +1,3 @@
-from encrypted_fields import fields
 from rest_framework import serializers
 
 from apps.secrets.models import (
