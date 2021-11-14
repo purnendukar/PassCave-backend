@@ -1,12 +1,14 @@
+from encrypted_fields import fields
 from rest_framework import serializers
 
-from apps.credential.models import (
+from apps.secrets.models import (
     BankCard,
     BankDetail,
     WebApplication,
     UPIGateway,
     SecretNote,
     Identity,
+    Secret,
 )
 from apps.user.serializers import UserSerializer
 
@@ -83,3 +85,26 @@ class IdentitySerializer(BaseSerializer, serializers.ModelSerializer):
     class Meta:
         model = Identity
         fields = ["id", "id_name", "id_number", "image"] + BaseSerializer.Meta.fields
+
+
+class SecretSerializer(serializers.ModelSerializer):
+    _model_serializers = {
+        "webapplication": WebApplicationSerializer,
+        "bankdetail": BankDetailSerializer,
+        "bankcard": BankCardSerializer,
+        "identity": IdentitySerializer,
+        "secretnote": SecretNoteSerializer,
+        "upigateway": UPIGatewaySerializer,
+    }
+
+    secret_type = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Secret
+        fields = ["secret_type", "secret_object"]
+
+    def get_secret_type(self, obj):
+        return obj.content_type.model
+
+    def get_secret_object(self, obj):
+        return self._model_serializers[obj.content_type.model](obj.secret_object).data

@@ -1,20 +1,22 @@
-from rest_framework import viewsets
+from rest_framework import mixins, viewsets
 
-from apps.credential.models import (
+from apps.secrets.models import (
     BankCard,
     BankDetail,
     WebApplication,
     UPIGateway,
     SecretNote,
     Identity,
+    Secret,
 )
-from apps.credential.serializers import (
+from apps.secrets.serializers import (
     BankCardSerializer,
     BankDetailSerializer,
     WebApplicationSerializer,
     UPIGatewaySerializer,
     SecretNoteSerializer,
     IdentitySerializer,
+    SecretSerializer,
 )
 
 
@@ -27,6 +29,11 @@ class CredentialMixin:
     def create(self, request, *args, **kwargs):
         request.data["owned_by"] = request.user.id
         return super().create(request, *args, **kwargs)
+
+
+class SecretViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    queryset = Secret.objects.all()
+    serializer_class = IdentitySerializer
 
 
 class BankCardViewSet(CredentialMixin, viewsets.ModelViewSet):

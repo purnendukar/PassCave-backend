@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
+from django.contrib.contenttypes.models import ContentType
 
 from encrypted_fields import fields
 
@@ -26,6 +28,14 @@ class AbstractCredentialModel(models.Model):
         abstract = True
 
 
+class Secret(models.Model):
+    title = models.CharField(max_length=255)
+    # Below the mandatory fields for generic relation
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.UUIDField()
+    secret_object = GenericForeignKey()
+
+
 class BankCard(BaseModel, AbstractCredentialModel):
     MONTH_CHOICES = [(str(i), calendar.month_name[i]) for i in range(1, 13)]
     CARD_TYPE_CHOICE = [
@@ -49,6 +59,7 @@ class BankCard(BaseModel, AbstractCredentialModel):
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
     card_type = models.CharField(max_length=20, choices=CARD_TYPE_CHOICE, default=4)
+    bank_card = GenericRelation(Secret, related_query_name="bank_cards")
 
 
 class BankDetail(BaseModel, AbstractCredentialModel):
@@ -64,6 +75,7 @@ class BankDetail(BaseModel, AbstractCredentialModel):
     branch_name = models.CharField(max_length=100, null=True, blank=True)
     holder_name = models.CharField(max_length=100, null=True, blank=True)
     bank = models.CharField(max_length=100, null=True, blank=True)
+    bank_detail = GenericRelation(Secret, related_query_name="bank_details")
 
 
 class WebApplication(BaseModel, AbstractCredentialModel):
@@ -84,6 +96,7 @@ class WebApplication(BaseModel, AbstractCredentialModel):
     password = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_password"
     )
+    web_app = GenericRelation(Secret, related_query_name="web_apps")
 
 
 class UPIGateway(BaseModel, AbstractCredentialModel):
@@ -96,6 +109,7 @@ class UPIGateway(BaseModel, AbstractCredentialModel):
     pin = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_pin"
     )
+    upi_gateway = GenericRelation(Secret, related_query_name="upi_gateways")
 
     class Meta:
         verbose_name = "UPI gateway"
@@ -108,12 +122,14 @@ class SecretNote(BaseModel, AbstractCredentialModel):
     note = fields.SearchField(
         hash_key=settings.SEARCH_HASH_KEY, encrypted_field_name="_note"
     )
+    secret_note = GenericRelation(Secret, related_query_name="secret_notes")
 
 
 class Identity(BaseModel, AbstractCredentialModel):
     id_name = models.CharField(max_length=100)
     id_number = models.CharField(max_length=100)
     image = models.ImageField(null=True, blank=True)
+    identity = GenericRelation(Secret, related_query_name="identities")
 
     class Meta:
         verbose_name_plural = "Identities"

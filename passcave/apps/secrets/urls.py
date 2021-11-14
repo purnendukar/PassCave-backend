@@ -1,17 +1,19 @@
 from rest_framework.routers import DefaultRouter
 
-from apps.credential.apis import (
+from apps.secrets.apis import (
     BankCardViewSet,
     BankDetailViewSet,
     SecretNoteViewSet,
     UPIGatewayViewSet,
     IdentityViewSet,
     WebApplicationViewSet,
+    SecretViewSet,
 )
 
 
 default_router = DefaultRouter(trailing_slash=False)
 
+default_router.register("", SecretViewSet, basename="secret")
 default_router.register("bank_card", BankCardViewSet, basename="bank_card")
 default_router.register("bank_detail", BankDetailViewSet, basename="bank_detail")
 default_router.register("upi_gateway", UPIGatewayViewSet, basename="upi_gateway")

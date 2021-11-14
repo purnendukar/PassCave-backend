@@ -1,12 +1,13 @@
 from django.contrib import admin
 
-from apps.credential.models import (
+from apps.secrets.models import (
     BankCard,
     BankDetail,
     WebApplication,
     UPIGateway,
     SecretNote,
     Identity,
+    Secret,
 )
 
 
@@ -89,3 +90,4 @@ admin.site.register(WebApplication, WebApplicationAdmin)
 admin.site.register(UPIGateway, UPIGatewayAdmin)
 admin.site.register(SecretNote, SecretNoteAdmin)
 admin.site.register(Identity, IdentityAdmin)
+admin.site.register(Secret)

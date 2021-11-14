@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "apps.user",
     "apps.plan",
-    "apps.credential",
+    "apps.secrets",
     "apps.secret_group",
 ]
 
