@@ -6,14 +6,16 @@ from apps.user.models import User, UserProfile
 from apps.plan.serializers import PlanSerializer
 
 
-class AuthRequestSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField()
+class AuthRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["email", "password"]
 
 
 class SignRequestSerializer(AuthRequestSerializer):
-    first_name = serializers.CharField(required=False)
-    last_name = serializers.CharField(required=False)
+    class Meta:
+        model = AuthRequestSerializer.Meta.model
+        fields = ["first_name", "last_name"] + AuthRequestSerializer.Meta.fields
 
 
 class PasswordResetSerializer(serializers.Serializer):
