@@ -49,7 +49,6 @@ Status: 200 OK
                     "last_name": ""
                 }
             ],
-            "title": "title",
             "title": "title"
         }
     ]
