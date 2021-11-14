@@ -1,5 +1,6 @@
 # PassCave (Backend)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb3ef934d6d440499a87d1efb1f1855b)](https://app.codacy.com/gh/purnendukar/PassCave-backend?utm_source=github.com&utm_medium=referral&utm_content=purnendukar/PassCave-backend&utm_campaign=Badge_Grade_Settings)
 [![Documentation Status](https://readthedocs.org/projects/passcave-backend/badge/?version=latest)](https://passcave-backend.readthedocs.io/en/latest/?badge=latest)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/aadbcb475f0a4559ac8a6a0d974bf60b)](https://www.codacy.com/gh/purnendukar/PassCave-backend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=purnendukar/PassCave-backend&amp;utm_campaign=Badge_Grade)
 
