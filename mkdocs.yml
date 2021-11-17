@@ -18,6 +18,7 @@ nav:
           - Secret Note: api/7-secret-note.md
           - Identity Secret: api/8-identity-secret.md
       - User Profile: api/9-user-profile.md
+      - User: api/10-user.md
     # - Errors: api/errors.md
   # - Technical Specs:
   #   - Server Config: backend/server_config.md

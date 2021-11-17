@@ -132,3 +132,16 @@ class UserProfileViewSet(
         serializer.save()
 
         return Response(serializer.data)
+
+
+class UserViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+
+    filterset_fields = ["email", "first_name", "last_name"]
+    search_fields = ["email", "first_name", "last_name"]
+
+    def filter_queryset(self, queryset):
+        print(queryset.filter(email__icontains="purnendu.kar8@gmail."))
+        print("asd", super().filter_queryset(queryset).count())
+        return super().filter_queryset(queryset)
