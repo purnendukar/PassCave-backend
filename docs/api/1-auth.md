@@ -147,7 +147,7 @@ new_password    | New Password for the account
 
 **Response**
 ```
-Status: 204 No Content
+Status: 200 OK
 ```
 ```json
 {
