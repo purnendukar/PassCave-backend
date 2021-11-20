@@ -13,8 +13,6 @@
 - Add `POST /api/auth/login` endpoint.
 
 - Add `GET /api/plan` endpoint.
-- Add `POST /api/plan` endpoint.
-- Add `PATCH /api/plan` endpoint.
 
 - Add `GET /api/secret_group` endpoint.
 - Add `POST /api/secret_group` endpoint.
