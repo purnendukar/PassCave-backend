@@ -10,7 +10,6 @@
 
 - Add `POST /api/auth/signup` endpoint.
 - Add `POST /api/auth/login` endpoint.
-- Add `POST /api/auth/login` endpoint.
 
 - Add `GET /api/plan` endpoint.
 
@@ -34,8 +33,8 @@
 
 **12/10/2021**
 
-- Add `PATCH /api/auth/logout` endpoint.
-- Add `Post /api/auth/forgot-password` endpoint.
+- Add `POST /api/auth/logout` endpoint.
+- Add `POST /api/auth/forgot-password` endpoint.
 - Add `PATCH /api/auth/password-reset-confirm` endpoint.
 - Added Email Functionality
 
